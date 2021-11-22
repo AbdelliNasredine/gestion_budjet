@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = -1219
-  Top = 239
-  Width = 975
-  Height = 571
+  Left = -1185
+  Top = 4
+  Width = 1119
+  Height = 586
   Caption = 'Principale - Gestion Budjet'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,234 +10,613 @@ object MainForm: TMainForm
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  Menu = MainMenu1
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
-  DesignSize = (
-    959
-    532)
   PixelsPerInch = 96
   TextHeight = 13
-  object sPageControl1: TsPageControl
+  object sStatusBar1: TsStatusBar
     Left = 0
-    Top = 24
-    Width = 956
-    Height = 506
-    ActivePage = sTabSheet2
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    TabOrder = 0
-    object sTabSheet1: TsTabSheet
-      Caption = 'Budjet'
-    end
-    object sTabSheet2: TsTabSheet
-      Caption = 'Engagements'
-    end
+    Top = 508
+    Width = 1103
+    Height = 19
+    Panels = <>
   end
-  object sToolBar1: TsToolBar
+  object mainMenu: TsPageControl
     Left = 0
     Top = 0
-    Width = 959
-    Height = 57
-    ButtonHeight = 47
-    ButtonWidth = 47
-    Caption = 'sToolBar1'
-    HotImages = sAlphaImageList1
+    Width = 1103
+    Height = 508
+    ActivePage = sTabSheet1
+    Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Images = sideMenuIcons
+    MultiLine = True
+    ParentFont = False
+    TabHeight = 135
     TabOrder = 1
-    object ToolButton1: TToolButton
-      Left = 0
-      Top = 2
+    TabPosition = tpLeft
+    TabWidth = 85
+    GlyphLayout = glTop
+    ReflectedGlyphs = True
+    RotateCaptions = True
+    TabMargin = 12
+    TabPadding = 12
+    TabSpacing = 14
+    object sTabSheet1: TsTabSheet
       Caption = 'Budjet'
-      ImageIndex = 0
+      object sGroupBox3: TsGroupBox
+        Left = 760
+        Top = 85
+        Width = 200
+        Height = 415
+        Align = alRight
+        Anchors = [akRight, akBottom]
+        Caption = 'Actions'
+        TabOrder = 0
+        BoxStyle = bsCard
+        object sBitBtn2: TsBitBtn
+          Left = 7
+          Top = 32
+          Width = 185
+          Height = 35
+          Caption = 'Nouveau &Branche'
+          TabOrder = 0
+          Glyph.Data = {
+            DE010000424DDE01000000000000760000002800000024000000120000000100
+            0400000000006801000000000000000000001000000000000000000000000000
+            80000080000000808000800000008000800080800000C0C0C000808080000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            333333333333333333333333000033338833333333333333333F333333333333
+            0000333911833333983333333388F333333F3333000033391118333911833333
+            38F38F333F88F33300003339111183911118333338F338F3F8338F3300003333
+            911118111118333338F3338F833338F3000033333911111111833333338F3338
+            3333F8330000333333911111183333333338F333333F83330000333333311111
+            8333333333338F3333383333000033333339111183333333333338F333833333
+            00003333339111118333333333333833338F3333000033333911181118333333
+            33338333338F333300003333911183911183333333383338F338F33300003333
+            9118333911183333338F33838F338F33000033333913333391113333338FF833
+            38F338F300003333333333333919333333388333338FFF830000333333333333
+            3333333333333333333888330000333333333333333333333333333333333333
+            0000}
+          Margin = 8
+          ImageIndex = 5
+          Alignment = taLeftJustify
+          Images = actionsIcons
+        end
+        object sBitBtn3: TsBitBtn
+          Left = 7
+          Top = 72
+          Width = 185
+          Height = 35
+          Caption = 'Nouveau &Rubrique'
+          TabOrder = 1
+          Margin = 8
+          ImageIndex = 5
+          Alignment = taLeftJustify
+          Images = actionsIcons
+        end
+        object sBitBtn4: TsBitBtn
+          Left = 7
+          Top = 112
+          Width = 185
+          Height = 35
+          Caption = 'Nouveau &Section'
+          TabOrder = 2
+          Margin = 8
+          ImageIndex = 5
+          Alignment = taLeftJustify
+          Images = actionsIcons
+        end
+        object sBitBtn5: TsBitBtn
+          Left = 7
+          Top = 152
+          Width = 185
+          Height = 35
+          Caption = 'Nouveau &Chapitre'
+          TabOrder = 3
+          Margin = 8
+          ImageIndex = 5
+          Alignment = taLeftJustify
+          Images = actionsIcons
+        end
+        object sBitBtn6: TsBitBtn
+          Left = 7
+          Top = 192
+          Width = 185
+          Height = 35
+          Caption = 'Nouveau &Article'
+          TabOrder = 4
+          Margin = 8
+          ImageIndex = 5
+          Alignment = taLeftJustify
+          Images = actionsIcons
+        end
+      end
+      object panelHeader: TsPanel
+        Left = 0
+        Top = 0
+        Width = 960
+        Height = 85
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clGradientActiveCaption
+        DoubleBuffered = False
+        TabOrder = 1
+        object sLabel1: TsLabel
+          Left = 16
+          Top = 8
+          Width = 94
+          Height = 45
+          Align = alCustom
+          Caption = 'Budjet'
+          ParentFont = False
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -32
+          Font.Name = 'Segoe UI Semibold'
+          Font.Style = [fsBold]
+        end
+        object sLabel2: TsLabel
+          Left = 16
+          Top = 48
+          Width = 122
+          Height = 21
+          Align = alCustom
+          Caption = 'Gestion de budjet'
+          ParentFont = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGray
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+        end
+      end
+      object panelBody: TsPanel
+        Left = 0
+        Top = 85
+        Width = 760
+        Height = 415
+        Align = alClient
+        BevelOuter = bvNone
+        DoubleBuffered = False
+        TabOrder = 2
+        object sPageControl1: TsPageControl
+          Left = 0
+          Top = 0
+          Width = 760
+          Height = 415
+          ActivePage = sTabSheet5
+          Align = alClient
+          TabOrder = 0
+          object sTabSheet5: TsTabSheet
+            Caption = 'Branches'
+          end
+          object sTabSheet6: TsTabSheet
+            Caption = 'Rubriques'
+          end
+          object sTabSheet7: TsTabSheet
+            Caption = 'Sections'
+          end
+          object sTabSheet8: TsTabSheet
+            Caption = 'Chapiters'
+          end
+          object sTabSheet9: TsTabSheet
+            Caption = 'Articles'
+          end
+        end
+      end
+    end
+    object sTabSheet3: TsTabSheet
+      Caption = 'Engagements'
+    end
+    object sTabSheet4: TsTabSheet
+      Caption = 'Mandatements'
+    end
+    object sTabSheet2: TsTabSheet
+      Caption = 'Param'#233'tre'
+      ImageIndex = 1
+      object sGroupBox1: TsGroupBox
+        Left = 15
+        Top = 8
+        Width = 769
+        Height = 345
+        Caption = 'Fiche d'#39'entreprise'
+        TabOrder = 0
+        object edtCode: TLabeledEdit
+          Left = 188
+          Top = 64
+          Width = 121
+          Height = 25
+          EditLabel.Width = 31
+          EditLabel.Height = 17
+          EditLabel.Caption = 'Code'
+          EditLabel.Color = clWhite
+          EditLabel.ParentColor = False
+          LabelPosition = lpLeft
+          LabelSpacing = 12
+          TabOrder = 0
+        end
+        object edtNominationAr: TLabeledEdit
+          Left = 520
+          Top = 104
+          Width = 209
+          Height = 25
+          BiDiMode = bdRightToLeft
+          EditLabel.Width = 85
+          EditLabel.Height = 17
+          EditLabel.BiDiMode = bdRightToLeft
+          EditLabel.Caption = 'Nomination Ar'
+          EditLabel.Color = clWhite
+          EditLabel.Font.Charset = ARABIC_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -13
+          EditLabel.Font.Name = 'Segoe UI'
+          EditLabel.Font.Style = []
+          EditLabel.ParentBiDiMode = False
+          EditLabel.ParentColor = False
+          EditLabel.ParentFont = False
+          EditLabel.Layout = tlCenter
+          Font.Charset = ARABIC_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          LabelPosition = lpLeft
+          LabelSpacing = 12
+          ParentBiDiMode = False
+          ParentFont = False
+          TabOrder = 1
+        end
+        object edtNomination: TLabeledEdit
+          Left = 188
+          Top = 104
+          Width = 209
+          Height = 25
+          EditLabel.Width = 68
+          EditLabel.Height = 17
+          EditLabel.Caption = 'Nomination'
+          EditLabel.Color = clWhite
+          EditLabel.ParentColor = False
+          LabelPosition = lpLeft
+          LabelSpacing = 12
+          TabOrder = 2
+        end
+        object cbxWillaya: TsComboBox
+          Left = 188
+          Top = 144
+          Width = 209
+          Height = 25
+          DoubleBuffered = False
+          TabOrder = 3
+          BoundLabel.Active = True
+          BoundLabel.Indent = 12
+          BoundLabel.Caption = 'Willaya'
+          Items.Strings = (
+            'Adrar'
+            'Chlef'
+            'Lagouat'
+            'Oum El Bouaghi'
+            'Batna'
+            'Bejaia'
+            'Biskra'
+            'Bechar'
+            'Blida'
+            'Bouira'
+            'Tamanrasset'
+            'T'#233'bessa'
+            'Tlemcen'
+            'Tiaret'
+            'Tizi Ouzou'
+            'Alger'
+            'Djelfa'
+            'Jijel'
+            'S'#233'tif'
+            'Saida'
+            'Skikda'
+            'Sidi Bel Abb'#233's'
+            'Annaba'
+            'Guelma'
+            'Constantine'
+            'M'#233'd'#233'a'
+            'Mostaganem'
+            'M'#39'Slila'
+            'Mascara'
+            'Ouargla'
+            'Oran'
+            'El Bayadh'
+            'Illizi'
+            'Bordj Bou Arreridj'
+            'Boumerd'#233's'
+            'Tarf'
+            'Tindouf'
+            'Tissemsilt'
+            'Oued'
+            'Khenchla'
+            'Souk Ahras'
+            'Tipaza'
+            'Mila'
+            'Defla'
+            'Naama'
+            'Ain T'#233'mouchent'
+            'Ghardaia'
+            'Relizane'
+            'Timimoun'
+            'Bordj Badji Mokhtar'
+            'Ouled Djellal'
+            'B'#233'ni Abb'#233's'
+            'In Salah'
+            'In Guezzam'
+            'Touggourt'
+            'Djanet'
+            'EL M'#39'Ghair'
+            'EL Meniaa')
+        end
+        object edtCodeM: TLabeledEdit
+          Left = 188
+          Top = 224
+          Width = 121
+          Height = 25
+          EditLabel.Width = 89
+          EditLabel.Height = 17
+          EditLabel.Caption = 'Code Minist'#232're'
+          EditLabel.Color = clWhite
+          EditLabel.ParentColor = False
+          LabelPosition = lpLeft
+          LabelSpacing = 12
+          TabOrder = 4
+        end
+        object edtServiceM: TLabeledEdit
+          Left = 188
+          Top = 184
+          Width = 97
+          Height = 25
+          EditLabel.Width = 99
+          EditLabel.Height = 17
+          EditLabel.Caption = 'Service Minist'#232're'
+          EditLabel.Color = clWhite
+          EditLabel.ParentColor = False
+          LabelPosition = lpLeft
+          LabelSpacing = 12
+          TabOrder = 5
+        end
+        object edtComptT: TLabeledEdit
+          Left = 188
+          Top = 264
+          Width = 201
+          Height = 25
+          EditLabel.Width = 87
+          EditLabel.Height = 17
+          EditLabel.Caption = 'Compte Tr'#233'sor'
+          EditLabel.Color = clWhite
+          EditLabel.ParentColor = False
+          LabelPosition = lpLeft
+          LabelSpacing = 12
+          TabOrder = 6
+        end
+        object btnSave: TsBitBtn
+          Left = 616
+          Top = 296
+          Width = 110
+          Height = 25
+          Caption = 'Enregistrer'
+          TabOrder = 7
+          OnClick = btnSaveClick
+          ImageIndex = 4
+          Images = actionsIcons
+        end
+      end
+      object sGroupBox2: TsGroupBox
+        Left = 16
+        Top = 360
+        Width = 769
+        Height = 97
+        Caption = 'Language'
+        TabOrder = 1
+        object sComboBox1: TsComboBox
+          Left = 192
+          Top = 40
+          Width = 233
+          Height = 25
+          DoubleBuffered = False
+          TabOrder = 0
+          BoundLabel.Active = True
+          BoundLabel.Indent = 12
+          BoundLabel.Caption = 'Language'
+          LabelFromTextHint = True
+          Items.Strings = (
+            'Francais'
+            'Arabe')
+        end
+        object sBitBtn1: TsBitBtn
+          Left = 448
+          Top = 40
+          Width = 110
+          Height = 25
+          Caption = 'Enregistrer'
+          TabOrder = 1
+          ImageIndex = 4
+          Images = actionsIcons
+        end
+      end
     end
   end
-  object sSkinProvider1: TsSkinProvider
-    SkinData.SkinSection = 'FORM'
-    TitleButtons = <>
-    Left = 928
-    Top = 16
-  end
-  object sAlphaImageList1: TsAlphaImageList
+  object sideMenuIcons: TsCharImageList
+    EmbeddedFonts = <
+      item
+        FontName = 'FontAwesome'
+        FontData = {}
+      end>
     Items = <
       item
-        ImageFormat = ifPNG
-        ImageName = 'icons8-ouvrir-40'
-        ImgData = {
-          89504E470D0A1A0A0000000D49484452000000280000002808060000008CFEB8
-          6D00000006624B474400FF00FF00FFA0BDA793000002C9494441545885ED96CF
-          4B545114C7BFE7BD71DE20635289942321659930B568E13F5091D05A69D52262
-          148DD24CC70682214BC710260A93A93108DA946D8548A15DAE5A891582902512
-          5208163A33EFCD3D2DE687D2F8E43EB57933D17775EFE59C7B3E9C1FF73DA0C0
-          453BBDC0E70F9513B91A0509AFC2540D00827801846997D3F1FA61F0EA8A2D80
-          ADBDE11A01EE03513300A7895902C08BA492BC357AF7C67CDE005B7AC33E263C
-          00A049868911702532D0316A359662D5A12510EE674204EB7033003A59B0774D
-          37DC6BBAE166C15E105F07F843CA845D0C8EFA02E13B56E359CA603A7391F436
-          01A6AEE5B9AA91B1B1E6E466F64D4D2FD5BDB58BED000F01284905A4CB563229
-          0DD8DA1BAE11844F48652EC18CF34F429D9332BE2D81FB6799793C05493108AA
-          7B3C78ED8B8CAF748905B80F99B23275C9C20140A4BF638289BB533B764111B7
-          657DA5007DFE50797A5A01606679AE6A443640461EE7CA30081FD3DB0B977A06
-          CB760D90C8D588F5A7246AD6735B29180C1AC488A6B79A43D11A770D90153E91
-          5913D43756E1B2BEA4647D99C449191FB91E64AACA2C554D956AEECD943062D9
-          C79A36DCB9951C523713BBC1A9E5A360FBAF6DB001009EDEF3FF84C5A7CDF243
-          9D6FFD07DCA972FA613870E6A24AE417C03130CBF5E88E29C8508059C11868EB
-          9F786E0A387CF3740F110DD654570ACF81FD8AC3A1E685CF309258F8F643CC2F
-          2C29CCE86E1F981CCA018C06CFEDD375B1E8AD3BA49DF21ECE0BD89F7A3F3D87
-          99D9AF714E3A0FB685C697810D3D188F190DCCAC1D3FE2B1050E00EA6BABC1CC
-          1A29F186CC59B6C74855CAC08C8AFAA3F6D001280580F17760A23D99B3829FE2
-          9C294DAEAEDAC161AA1CC0F8D2773B384C557C25D62A2BECE030550EA05A5A6A
-          0787A98AAFC4AB9FB7FD3FFA57547C192CB41E2CF8292EBE1217DA97A4E0BFC5
-          C557E267AFDEDAC161AA2CA0A1EB538E9292E6AD8CF32543D7A7EC66F877F41B
-          2F6FE806F9FCC9EB0000000049454E44AE426082}
+        Char = 61459
       end
       item
-        ImageFormat = ifPNG
-        ImageName = 'icons8-protection-des-donn'#233'es-80'
-        ImgData = {
-          89504E470D0A1A0A0000000D49484452000000500000005008060000008E11F2
-          AD00000006624B474400FF00FF00FFA0BDA793000011BF49444154789CED9C69
-          701CC775C77F3DC7EECEEE02BBC06209905C8007484B3C42CB966CD9911CD992
-          25324E1CA75C2955CA57125FAA7C8892D892E2A42A119C0F762CD995AAF84B6C
-          C5962D975C952825472AC7E661C689A4508AC5C326C51304891B8B0516D8FB9C
-          99CE87C12E0072411CBB002999FF2F68CCF4F4EBFE6FF7EBD7AF5F37DCC44D5C
-          4F88B516F8C4A34F77E8AAF4DA2535606A42556C1994C2D6406D129202C8BCA2
-          2A39695A452145BAAC8B42C1F0447B7A1E2CAD755D97828613D8D3D3A3F8D39B
-          DE2685FA4E6037427622E8925244047223E05E41B11241544886A464580A8640
-          F4AAC23A96F6964EF6F43C946B7033968CBA09ECE979DAE3CDAAF7827C40486E
-          076E43E06F40DD960A133887E41888977597F6E3BFF8CAC7C6D74AF88A08FCEA
-          979E6DD14CEBA352D8BF2B10F703BE6BE577B95D185E03AFCFC0F07BD1340DDD
-          AD218482EED2108A82A669D8968D659998651B5B5A986513CB34C9670BE47379
-          72993CC5420169CB6B89B3051C9552BC682B3CFF574F7CEAEC4ADAB8542C8BC0
-          AF3DF6835B1429FF1CE4A7A8419AE6D208B40609B60608B606098402F89AFD68
-          AADAB00A4B29C965F3A4A79324E249A6E30992F104F95CBE6676E0B044FCE3A3
-          4F7EF2A702714DE657822511F8B5C79ED9A14AF98484DF99FB8D108260284847
-          A4837591765A42418458F37909805C26CFF84894E8709489B1092CD3BA32CB39
-          21F8DB479EF8A37F6FA4DC6BB6B6A7A747F165B6FE35423E0EE895E7BE261F9B
-          6FD94C5777171EC3D3C8FA34049665111D8A72F9FC6526A2134E3FAC4088FF14
-          96F6C78F7CE363938D90B52081DFFAFCB7F454B3E78708FEA0F2AC251464E7ED
-          BB08AF0F5FB79EB65C6492192E9CBAC060DF205256991CD054EBDEBFFC874F5F
-          AAB7FC055978F2D1EFFF33F01080CBA5B3FB8EDFA06B7BD79B86B82B311D4FF0
-          CB574F90984C002011973C05E51D0F7FF313A97ACAADA9DDBFFEC5A7DF8510DF
-          02F0181EEEDA7737ED91F6372D790086D74367771789C969B2E92C025A6C4D8A
-          8347FEE3703DE52AB51E4A4579B092BEE39E3B08B404EA9171C3405355DE73EF
-          7BF0F88CCAA33FACB7CC9A0482787F25D5D2DA52AF8C1B0AAAA6D21C6872FE91
-          74D65BDE02044A572575E97C5FBD326E28A4A6934C8EC70190A2B60A5B0E6A12
-          28A0BF923E7DFC0CBD6FF4D62BE786C0F4E4342F1F7805DBBACA465C31B4059E
-          17AB29096F1C7D83D8E8387BDEFD769A824D0D13BE56304B26E74E9EA3EF4C1F
-          B66D37B4EC85089CCDA0AA9896456C7482C32F1CA6ABBB93CDB76EA5B5EDC6D7
-          8D855C8181DE7EFACE5EA25898ED135EBF8F5C26DB10198B1278CF87DFCFF1FF
-          3DC1F4C414524A062E0E327071904028C0A66D9B59DFD98ED77F4D5FC29AA25C
-          2A131B8B31726984D1A131E49C1EE7F6B8D973E71E460746D78EC0E66033EFFF
-          D03D0CF70FD37BBAB76A8826E3494EC67FC5C9FF83A6809F751B3B58B73E4C30
-          14C0E3351629B571B04C8BC45482782CCEF8F038F1F1F8DC1507E010B7E5D62D
-          6CDBB90DDDA5333A30DA30F98B12088080C89608912D11E2D1497ACF5C243A14
-          AD56349DCC904E5EA4EFCCC56A85836D4102AD41FCCD3E0CAF17C3E7715C592B
-          F0CC48DB269F2F92CFE6C867F3E4B23952538E372693CA5C455805819600DD3B
-          BA897447501BE8119A8BA5113807A18E36421D6D944B65C687C7890E8F313E12
-          A3549CF5B8170B45C687C7191FBEDAAFE972BBD0741D5DD710AA40D75D0801BA
-          4BC7B22C6CCBA65C3691D2A65C2C635936C57C614192E642280A6DED21D67776
-          D0D1B91E5FD3EAAB9665135881EED2896C8D10D91A414A4962729A443C41229E
-          607A32412A91AAD9E852B1348FEC7AE0F51B045B5B08868204DB82B4865BD15D
-          FAE21F36102B26702E8410B4845B6909B7569F5996452695219FC993CFE6C865
-          0BE473CE10344D13B36C625B12B354C29612B36CA2AA2AAAAAA06A8E975A776B
-          288A8A617830FC065E9F17C3EBA8027FB31F97DB758D5AAD0D1A42602DA8AA4A
-          A025F09659472F8405967237B154DC24B04EDC24B04EDC24B04EDC24B04EDC24
-          B04E2C44E0CE4AA2C6FEEA9B1E8978A26165D5DE1399B393DAC885F78D8062A1
-          482ED3B858A4857AE0602571F2F59364D38D71FD5C6FD8B6CDB1978F2D695DBD
-          542CE4D2AF32562A9478E9272F313EB266014FAB825C26CF9143471ADE8E252D
-          E50AF902470E1DA1736B27BBDFB5FB860CE75808D2B6E93B7B9933274E57F5B9
-          AAAA580DDA175994C0EE1D5BE93BEB44400C5D1A62646094C8E68D74EFE826D8
-          166C48255603C54291CBE72F73F97C3F8539915B2D6D2DB83CAE9AAEB6956051
-          02F7DCF976DA377670F21727C9A432D896C560DF20837D83B484827474ADA763
-          6307C150F03A040CCF47219B273A324E7438CAF8486CDEEE9BAAA9DCB2E716B6
-          EFDECED1978E364CE69286707BA49DFB36DCC7E0C5412E9CBA509D54A6E309A6
-          E309CE9E388BC7EB21BC3E4C4BA88540C88911D4F45573F620A5249548919C4A
-          928827988CC6494E5D6D9E68BAC6E6B76D66FBAE6DABB2D5B0E4162A8AC2E6B7
-          6D66D3F64D4C8C4D32D0DB4F74248A59320167076CA86F88A1BE21C0F111FA9A
-          7CF8037E0CAF81C7EBC1EB77FC79BAEE4277EB08049A5B4711024DD7B02D0BD3
-          B2B1CB26B6743CD366D9249FCD53C815C8657314B20572992CA9447A413D2614
-          416B5B2B5DDBBA886C8EA0B956EF875C76C94208D66D08B36E4318694B925349
-          A2C351C686C71C0375C6429052924965C8A4328DAE734DB83D6EDA3ADAE88874
-          D0D1D9B166CED6BA7E1AA108826D8E3BFDD6DB6EA5542A939C4A908CA7484D27
-          484C27C924330D5DCD084560F80C82AD419A5B9A9DBFAD017C7E6FC3642C070D
-          EDDB2E974EB8234CB8233CEF79A9589A1982798AB902C5628172D119A666D942
-          DA36A669A2288E3B5FD514544545D55574970BAFCFC0637830BC1EDC8607A134
-          66B6F2B893FCECBBBFBDF3839FFEE9999596B17ACA610E5C6E172EB78BE696E6
-          B510774D98C51886728C6D9DA7F01993D816A70F7E7BDF1929784E55C5BF2D97
-          CC3521F07AC32CC6C8C68F928DBF4A217D1E9FC6FC960B760A78DCB6E4E3CB25
-          F32D4B60393F4C66F255B2F1D728E5866AE41004436D0024E2935467BFB9643E
-          B5EFB480E7842A9E5B88CCB71481A5DC10D9F86B64265FA59C1FAE99C7D714A0
-          BDB38B0D9D5B31FCCE81AA423E476C7890F191C1F964C22E09BBA4257B0E3EB5
-          EF12F06361F3DCFD0FED7FA592E14D4FE072485BDFB905AFFFEAF03C8FE1A56B
-          FBAD746DBF95422E4B6C646886CC89B9D9B6020F4B8587E792F9A62770F8578F
-          81BCDA4CAA90D611D984AFA9C6DEB4043233915B7EA5BA0CF5787D5532F3D92C
-          13A3438C0DF5939A8ECFFDBA42E69F2E44E04A4E545E17288A0BDB729C0586CF
-          47787D84F68D9B08B685AFCE5C212D6D41CA864AE49B00FC2A3429D0AC549D7C
-          866F96CC4C2AC9F8C800E3438364D3C94A89B99A044AD85549E7B3390CDFF531
-          529702A1B8C1CAD3D6B18177DCF581AB33CC234D42AD838A12E77DDA8231E690
-          2960C6E6F43707F037EFA17BC71E8EBFF273E2E3A348C82FE05095539574EFE9
-          1B3BC85CA8CE92CDB6E684EE5A1212360C97E15C1186CACEFFD73EE5E9A042E6
-          68192E9460A00471CB297306B6EDACFF05E416DA13A96AE3BEB317E9EF1D5849
-          DBD6048AE238774D734EC4D7F80C01297BFE39B9E5C206B212C64D88CDEA59B3
-          5C9E4989DA040A8459FD47C28923C7397EE438A552B956F6EB0ACDE53875CBA5
-          3904AE861F614ED49C59AECA1A5B7416168A40DA92810B034407A3EC7CE74E3A
-          B776A26AAB13F1B95CA86EC7182E167248094200BA0234783BD6E5E8422925C5
-          7CC5C32D0716DD58BFFB81BBAA8EC862A1C8892327D8FFDC7E4E1F3D4D2E7DDD
-          AE2AA8427385004707968A33F5598D1E384360B1909B3D2A21C4D0A23DB0AD23
-          CCFDBFFF41CE9D3CC7A5B397B02C8B52B1C485372E70E18D0B34B704581F6967
-          5DA48350B8B5619E92A54273CF9A2BF96C16B7C70BFA2AD44153AA32AAB0E5E0
-          920C69CDA5B1FB8EDD6CDBB58D4B67FAE8EF1DA89EBB484D27494D27397FEA02
-          AAA6126C0D120C05AA6E7D5FA0A9E147FEF3993C89A904C9A92499C434A119AB
-          35934A100C854113A08A7933675DD04575CD9649CE6E1B28707A592B118FE161
-          E7EDBBD8F18E1D8C0D45890E3901E6857C0170C240E2B138F1D83CAB1D97DB85
-          C76BE0F319787C06BAAE575DF94BB9742297712E9DC867AFBE7442089BD66D0A
-          42D8A4A7A761CBCC0BAFE298238D806FB647A713550BAF542A88932B5ACA0945
-          61C3A60D6CD8B4012424A6928C8F44998C4E909C4ACD3B1504B381E5A9E9E402
-          25AE1C8AAA53B6DA7069315289393F9C4F40BA4142BCB35345AA4AA038F5A187
-          7F5AAC7F2D2C20180A100C05B865CF2D0014727992532992D309D2C90CF96C81
-          42CE39DFB112F7BEA22878BC6E0CAF178FCFC0E7F312080508B406F037F989F7
-          C748450F924E2630CB65345D9FD7E8BA613865954BC5B943F87558256F8CC76B
-          E0F11AB447DAAF7A67964D4AC522A5421989A45C2A23AB51FA0A8AAAA26AEA1C
-          97BEBE68248411D84D2A7A1069DB4CC5A2ACDBD8091EE1E842B34E3DE812E076
-          86F0D4C47835AE46200FC175706769BA86A66B781B78B79111BC0DA1E848BBCC
-          6474C4211020A8C0649D7A3038DB9327A3D548B5624E711D82B74880A5A27AF0
-          34ED0020363A34BB2E0E3660F60F3865D8B6456CA41AB4F6DF1FF9CC8B695898
-          C0AAFABD11976FB5E06F7B2FE02CE926A323CE4397006F1D36A15FA9DA941363
-          23B36B6021AB97F7D424D0469EAFA41B1584B3DAF0B7DD85A23A2BA6A14B1766
-          5FB4D5A1A5C2B33D78A8CFA144403A2FDCFF5A79BED09D093F62C6DD78E6F899
-          374598AF503DF8D7FD160053B1E8EC6CE957C0B7024DD5AC5467DF74629AE989
-          D88C207E5019BEB000818F3DF927BD489E05C865B2BCF65FAF35F49E81D54273
-          C73E84709AD477F6E4EC8B75CBD4850208CFF6DC396559B6657F736ED6057F1A
-          21F52F542E9F888DC67879FF2B147285E555648DE13236E20BDF0D406C6498E4
-          D4CCF5588602A1650CE5B056355DA627634C8C3AEE51897C76EF4307CFCDCDBA
-          20818F7CE36393528A0F035180A989290EBF7098818B038BDDDF775DD1DAF920
-          426880E4ECF15FCC1EF90FAB8E6DB818BC0A849C1E2B6D9B73275EAFBC29A9AA
-          F6E52BB35FB36F1F3AF2A3D8FD777DE44501F781085B96C5D8E01823FD23B8DC
-          2E9A824D37DC75508AE6036951489DA1542C8022680DB73BC3D2A740CA9ADD4C
-          BA129A804DBAE388002E9D3DC578D574115FB9FFB33F79FECA4F16550E878EBC
-          30F5C06F7EF4FB52C856817827204AC512A303A38CF48F6059165EBF175D5FDB
-          83CEB5605A16A3FDA35CEEB350ED73685A91C4648CA660085F53B3438C4F8564
-          0D57BF0A6C7655FD7E13A3439CFBA5D3FB049CD7B5C2C7BFFF42BF79C557CB0B
-          CA7DF29167EE04F9750477CF2B440842ED21225B22843BC2F8036B77856AA950
-          221E8B333230C2D8E01866D969A3E19E625BD7CF508485A6E9BCFBDEBDB3FBC3
-          4509836528CFB0A809E8D2AB433C934AF2FACFF7639A2640C1B6E55DFB1E3A70
-          BC96FC158DBF6F3CF6BDFB6C29BE00ECA3861EF5181E5AD785686B0F116C0BE2
-          6FF6E3F6D4BFD56C991699549A5422C3542CCE6474925432B5D0C6D1D98DEDBF
-          38DE16E8FB3880E1F373FBFBEEC3F0CDFCB8A68461D36160A3E69008E432698E
-          BD7C9842CE719C4AF8ECDECFEDFFCE4275AA4B813DF9C8335B407E02C183C0EE
-          6BE55535157F931F7FB31F8FD78DAA6AE81EDD711A686AF5D209CBB42897CB98
-          650BCB3429154B649219B2E9EC556EB21A989488E7811F3EFAE4275F120879E0
-          A97D5F15F0250097DBC3EDEFBB0F7F60E6744185F81916B2E924C75E3E3CBBE7
-          21F9EA039FDFFF37D712D8B019E08947BFD70DE21E81B807E43DC0A646957D0D
-          A4805724F27F54215F4A7B371FEDE9F9C0557AEAC053FBFE49C09F01E82E173B
-          6F7F2FEB3644E6E5898D0C71FAD8ABD5E59A846FEEFDDCFE8717ABC0AA4DA15F
-          FFE2B39BA428DF894237D08D14DB806E60E30AE42610F409C9451BFA84901785
-          C5C9AE41EF2F1F7CEEC12559F8079EDAD723E0EF1CD982C8D66D6CDF7D1B20E8
-          3D7582E1CBD50BD6A484BFDFFBB9FD3D4B2977CD6D909E9EA73D8184D682A76C
-          5865A5054D3190C2B0A50C025929645EB564CA52D58C1432EFCD29897AAFE9AC
-          E0E0B7F7FD1E82EF006DE00C6910948AD5833893483EF3C0E7F7BFB8D4326F2C
-          236E0D70F03BF76FC056BF0BECBDE2D50114EBD30F7CE6D0B28EA7FEDA1158C1
-          CFFE65EF3E5B8A2F0328423EFEC1CF1ED8BF9272FE1F504F94D13F32849C0000
-          000049454E44AE426082}
+        Char = 61918
       end>
-    Left = 896
-    Top = 16
+    Left = 9
+    Top = 480
+    Bitmap = {}
+  end
+  object MainMenu1: TMainMenu
+    Images = mainMenuIcons
+    Left = 10
+    Top = 384
+    object F1: TMenuItem
+      Caption = 'Fichier'
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object Q2: TMenuItem
+        Caption = 'Quitter'
+        ImageIndex = 0
+      end
+    end
+    object N1: TMenuItem
+      Caption = '?'
+      object A1: TMenuItem
+        Caption = 'A propos'
+        ImageIndex = 1
+      end
+    end
+  end
+  object mainMenuIcons: TsCharImageList
+    EmbeddedFonts = <
+      item
+        FontName = 'FontAwesome'
+        FontData = {}
+      end>
+    Items = <
+      item
+        Char = 61453
+        Color = -16777036
+      end
+      item
+        Char = 61530
+        Color = -5344256
+      end>
+    Left = 9
+    Top = 448
+    Bitmap = {}
+  end
+  object actionsIcons: TsCharImageList
+    Height = 16
+    Width = 16
+    EmbeddedFonts = <
+      item
+        FontName = 'FontAwesome'
+        FontData = {}
+      end>
+    Items = <
+      item
+        Char = 61452
+      end
+      item
+        Char = 61453
+      end
+      item
+        Char = 61442
+      end
+      item
+        Char = 61460
+      end
+      item
+        Char = 61639
+      end
+      item
+        Char = 61543
+      end
+      item
+        Char = 61544
+      end>
+    Left = 10
+    Top = 416
+    Bitmap = {}
+  end
+  object qryInsertFicheEnt: TADOQuery
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Adm1n1strateur;Persist Security Inf' +
+      'o=True;User ID=sa;Initial Catalog=gestion_budjet;Data Source=NAS' +
+      'RO-DEV'
+    CursorType = ctStatic
+    Parameters = <
+      item
+        Name = 'code'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 2
+        Value = Null
+      end
+      item
+        Name = 'nominationFr'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 30
+        Value = Null
+      end
+      item
+        Name = 'nominationAr'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 30
+        Value = Null
+      end
+      item
+        Name = 'wilayaFr'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 30
+        Value = Null
+      end
+      item
+        Name = 'wilayaAr'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 30
+        Value = Null
+      end
+      item
+        Name = 'codeM'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 5
+        Value = Null
+      end
+      item
+        Name = 'serviceM'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 2
+        Value = Null
+      end
+      item
+        Name = 'compte'
+        DataType = ftString
+        NumericScale = 255
+        Precision = 255
+        Size = 20
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'INSERT INTO entreprise (code_En, nomination_FR, nomination_AR, w' +
+        'ilaya_FR, wilaya_AR, Code_M, service_M, compte_tresor_w)'
+      
+        'VALUES (:code, :nominationFr, :nominationAr, :wilayaFr, :wilayaA' +
+        'r, :codeM, :serviceM, :compte)')
+    Left = 40
+    Top = 480
   end
 end

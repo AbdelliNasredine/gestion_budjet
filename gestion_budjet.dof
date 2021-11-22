@@ -134,6 +134,5 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
-[HistoryLists\hlUnitAliases]
-Count=1
-Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
+[Excluded Packages]
+c:\program files (x86)\borland\delphi7\Projects\Bpl\AlphaDB7.bpl=AlphaControls DB-aware pack
