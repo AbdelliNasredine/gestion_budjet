@@ -8,7 +8,7 @@ uses
   sTabControl, sPageControl, sStatusBar, sSkinProvider, acHeaderControl,
   ImgList, acAlphaImageList, StdCtrls, Buttons, sBitBtn, acCoolBar, Mask,
   sMaskEdit, sCustomComboEdit, sComboBox, sGroupBox, ExtCtrls, DBCtrls,
-  sPanel, DB, ADODB, sLabel;
+  sPanel, DB, ADODB, sLabel, Grids, DBGrids, dbcgrids;
 
 type
   TMainForm = class(TForm)
@@ -56,8 +56,12 @@ type
     sTabSheet7: TsTabSheet;
     sTabSheet8: TsTabSheet;
     sTabSheet9: TsTabSheet;
+    DataSource1: TDataSource;
+    ADOTable1: TADOTable;
+    sSkinProvider1: TsSkinProvider;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSaveClick(Sender: TObject);
+    procedure sBitBtn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,7 +73,7 @@ var
 
 implementation
 
-uses Auth, uValidation;
+uses Auth, uValidation, uAddBranch;
 
 {$R *.dfm}
 
@@ -123,6 +127,11 @@ begin
     on e:exception do
     messagedlg('Error: ' + #13 + e.Message, mtWarning, [mbOK], 0);
   end;
+end;
+
+procedure TMainForm.sBitBtn2Click(Sender: TObject);
+begin
+  fAddBranch.Show;
 end;
 
 end.

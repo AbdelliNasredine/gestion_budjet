@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, DB, ADODB, Buttons, sSkinManager;
+  Dialogs, StdCtrls, ExtCtrls, DB, ADODB, Buttons, sSkinManager,
+  sSkinProvider;
 
 type
   TAuthForm = class(TForm)
@@ -18,6 +19,7 @@ type
     btnConnexion: TBitBtn;
     btnQuiter: TBitBtn;
     sSkinManager1: TsSkinManager;
+    sSkinProvider1: TsSkinProvider;
     procedure btnConnexionClick(Sender: TObject);
     procedure btnQuiterClick(Sender: TObject);
   private

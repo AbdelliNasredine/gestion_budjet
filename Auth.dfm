@@ -1,6 +1,6 @@
 object AuthForm: TAuthForm
-  Left = -1183
-  Top = 607
+  Left = -1185
+  Top = 596
   Width = 382
   Height = 204
   AlphaBlend = True
@@ -2666,6 +2666,17 @@ object AuthForm: TAuthForm
     ThirdParty.ThirdStaticText = 'TStaticText'
     ThirdParty.ThirdNativePaint = ' '
     Left = 40
+    Top = 120
+  end
+  object sSkinProvider1: TsSkinProvider
+    AddedTitle.Font.Charset = DEFAULT_CHARSET
+    AddedTitle.Font.Color = clNone
+    AddedTitle.Font.Height = -11
+    AddedTitle.Font.Name = 'MS Sans Serif'
+    AddedTitle.Font.Style = []
+    SkinData.SkinSection = 'FORM'
+    TitleButtons = <>
+    Left = 72
     Top = 120
   end
 end
