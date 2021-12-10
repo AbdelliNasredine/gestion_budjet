@@ -33,7 +33,7 @@ var
 
 implementation
 
-uses Main ,DBGrids;
+uses Main ,DBGrids, uDataModule;
 
 {$R *.dfm}
 

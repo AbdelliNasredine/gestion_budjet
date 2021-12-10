@@ -1,9 +1,10 @@
 object fAddBranch: TfAddBranch
-  Left = -785
-  Top = 592
-  Width = 305
-  Height = 232
+  Left = -1123
+  Top = 9
+  BorderStyle = bsDialog
   Caption = 'Nouveau Branch'
+  ClientHeight = 243
+  ClientWidth = 709
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,94 +13,128 @@ object fAddBranch: TfAddBranch
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object sLabel1: TsLabel
-    Left = 16
-    Top = 16
-    Width = 202
-    Height = 29
-    Caption = 'Nouveaux Branche'
-    ParentFont = False
-    Font.Charset = DEFAULT_CHARSET
+  object sGroupBox1: TsGroupBox
+    Left = 0
+    Top = 0
+    Width = 709
+    Height = 243
+    Align = alClient
+    Caption = 'Ajouter une branche'
+    Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -24
-    Font.Name = 'MS Sans Serif'
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
     Font.Style = []
-  end
-  object LabeledEdit2: TLabeledEdit
-    Left = 16
-    Top = 72
-    Width = 257
-    Height = 21
-    EditLabel.Width = 58
-    EditLabel.Height = 13
-    EditLabel.Caption = 'Designiation'
+    ParentFont = False
     TabOrder = 0
-  end
-  object LabeledEdit3: TLabeledEdit
-    Left = 16
-    Top = 120
-    Width = 257
-    Height = 22
-    EditLabel.Width = 72
-    EditLabel.Height = 14
-    EditLabel.BiDiMode = bdLeftToRight
-    EditLabel.Caption = 'Designiation Ar'
-    EditLabel.Font.Charset = ARABIC_CHARSET
-    EditLabel.Font.Color = clWindowText
-    EditLabel.Font.Height = -11
-    EditLabel.Font.Name = 'MS Sans Serif'
-    EditLabel.Font.Style = []
-    EditLabel.ParentBiDiMode = False
-    EditLabel.ParentFont = False
-    Font.Charset = ARABIC_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-  end
-  object sBitBtn1: TsBitBtn
-    Left = 200
-    Top = 152
-    Width = 75
-    Height = 25
-    Caption = 'Save'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 2
-    Kind = bkOK
-  end
-  object sBitBtn2: TsBitBtn
-    Left = 112
-    Top = 152
-    Width = 75
-    Height = 25
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 3
-    OnClick = sBitBtn2Click
-    Kind = bkCancel
-  end
-  object sSkinProvider1: TsSkinProvider
-    AddedTitle.Font.Charset = DEFAULT_CHARSET
-    AddedTitle.Font.Color = clNone
-    AddedTitle.Font.Height = -11
-    AddedTitle.Font.Name = 'MS Sans Serif'
-    AddedTitle.Font.Style = []
-    SkinData.SkinSection = 'FORM'
-    TitleButtons = <>
-    Left = 72
-    Top = 152
+    BoxStyle = bsCard
+    object edtBrancheFr: TsEdit
+      Left = 112
+      Top = 128
+      Width = 250
+      Height = 25
+      TabOrder = 0
+      BoundLabel.Active = True
+      BoundLabel.Indent = 12
+      BoundLabel.Caption = 'branche'
+    end
+    object sBitBtn2: TsBitBtn
+      Left = 496
+      Top = 184
+      Width = 90
+      Height = 29
+      Cancel = True
+      Caption = 'Cancel'
+      TabOrder = 1
+      OnClick = sBitBtn2Click
+      NumGlyphs = 2
+    end
+    object sBitBtn1: TsBitBtn
+      Left = 600
+      Top = 184
+      Width = 90
+      Height = 29
+      Caption = 'Save'
+      Default = True
+      TabOrder = 2
+      OnClick = sBitBtn1Click
+      NumGlyphs = 2
+    end
+    object edtDesigniationFr: TsEdit
+      Left = 112
+      Top = 88
+      Width = 250
+      Height = 25
+      TabOrder = 3
+      BoundLabel.Active = True
+      BoundLabel.Indent = 12
+      BoundLabel.Caption = 'designiation'
+    end
+    object edtCode: TsEdit
+      Left = 112
+      Top = 48
+      Width = 81
+      Height = 25
+      Enabled = False
+      TabOrder = 4
+      BoundLabel.Active = True
+      BoundLabel.Indent = 12
+      BoundLabel.Caption = 'code'
+    end
+    object edtDesigniationAr: TLabeledEdit
+      Left = 392
+      Top = 88
+      Width = 250
+      Height = 25
+      EditLabel.Width = 41
+      EditLabel.Height = 17
+      EditLabel.Caption = #199#225#202#211#227#237#201
+      EditLabel.Color = clInactiveCaption
+      EditLabel.Font.Charset = ARABIC_CHARSET
+      EditLabel.Font.Color = clWindowText
+      EditLabel.Font.Height = -13
+      EditLabel.Font.Name = 'Segoe UI'
+      EditLabel.Font.Style = []
+      EditLabel.ParentColor = False
+      EditLabel.ParentFont = False
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      LabelPosition = lpRight
+      LabelSpacing = 12
+      ParentFont = False
+      TabOrder = 5
+    end
+    object edtBrancheAr: TLabeledEdit
+      Left = 392
+      Top = 128
+      Width = 250
+      Height = 25
+      EditLabel.Width = 27
+      EditLabel.Height = 17
+      EditLabel.Caption = #199#225#221#209#218
+      EditLabel.Color = clInactiveCaption
+      EditLabel.Font.Charset = ARABIC_CHARSET
+      EditLabel.Font.Color = clWindowText
+      EditLabel.Font.Height = -13
+      EditLabel.Font.Name = 'Segoe UI'
+      EditLabel.Font.Style = []
+      EditLabel.ParentColor = False
+      EditLabel.ParentFont = False
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      LabelPosition = lpRight
+      LabelSpacing = 12
+      ParentFont = False
+      TabOrder = 6
+    end
   end
 end
