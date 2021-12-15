@@ -220,7 +220,7 @@ end;
 
 procedure TMainForm.loadSettings();
 begin
-  if NBRecord('entreprise') <> 0 then
+  {if NBRecord('entreprise') <> 0 then
   with dm do
   begin
     qryEntreprise.SQL.Clear;
@@ -234,7 +234,7 @@ begin
     edtServiceEnt.Text := qryEntreprise.FieldValues['Service_M'];
     edtCodeMinEnt.Text  :=  qryEntreprise.FieldValues['Code_M'];
     edtComptTreEnt.Text := qryEntreprise.FieldValues['compte_tresor_w'];
-  end;
+  end;}
 end;
 
 procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -281,7 +281,7 @@ end;
 
 procedure TMainForm.btnSaveClick(Sender: TObject);
 begin
-  // validate required data
+  {// validate required data
   validateRequired(edtCodeEnt.Text, 'Code');
   validateRequired(edtNominationEnt.Text, 'Nomination');
   validateRequired(edtNominationEntAr.Text, '«·«”„');
@@ -315,7 +315,7 @@ begin
   else
     begin
       // update
-    end;
+    end;}
 end;
 
 procedure TMainForm.btnAddRubriqueClick(Sender: TObject);

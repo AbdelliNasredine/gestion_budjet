@@ -30,6 +30,12 @@ procedure InsertChapiter(
   montant : String
 );
 
+// ****** Table - TypeEngagement ******
+procedure InsertTypeEngagement(designation: String);
+procedure UpdateTypeEngagement(code, designation: String);
+procedure DeleteTypeEngagement(code: String);
+
+
 implementation
 
 uses uDataModule;
@@ -229,6 +235,50 @@ begin
   q.Close;
   q.Free;
 end;
+
+procedure InsertTypeEngagement(designation: String);
+var q: TADOQuery;
+begin
+  q := TADOQuery.Create(nil);
+  q.Connection := dm.ADOConnection1;
+  q.sql.Text := 'INSERT INTO type_engagement (code_te, designation_te) VALUES ('
+  + '(SELECT ISNULL(FORMAT(MAX(code_te)+1,''00''),''01'') FROM type_engagement),'
+  + quotedstr(designation) + ')';
+  q.ExecSQL;
+  q.Close;
+  q.Free;
+end;
+
+procedure UpdateTypeEngagement(code, designation: String);
+var q :TADOQuery;
+begin
+  q := TADOQuery.Create(nil);
+  q.Connection := dm.ADOConnection1;
+  q.sql.Text :='UPDATE type_engagement SET designation_te = '
+          + quotedstr(designation) + 'WHERE code_te = ' + quotedstr(code);
+  q.ExecSQL;
+  q.Close;
+  q.Free;
+end;
+
+procedure DeleteTypeEngagement(code: String);
+var q :TADOQuery;
+begin
+  q := TADOQuery.Create(nil);
+  q.Connection := dm.ADOConnection1;
+  q.sql.Text := 'DELETE FROM type_engagement WHERE code_te = '+ quotedstr(code);
+  q.ExecSQL;
+  q.Close;
+  q.Free;
+end;
+
+
+
+
+
+
+
+
 
 
 

@@ -12,6 +12,8 @@ type
     dsBranche: TDataSource;
     qryBranche: TADOQuery;
     qryEntreprise: TADOQuery;
+    qryTypeEngagement: TADOQuery;
+    dsTypeEngagement: TDataSource;
   private
     { Private declarations }
   public
