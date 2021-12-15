@@ -34,7 +34,10 @@ procedure InsertChapiter(
 procedure InsertTypeEngagement(designation: String);
 procedure UpdateTypeEngagement(code, designation: String);
 procedure DeleteTypeEngagement(code: String);
-
+// ****** Table - TypeEngagement ******
+procedure InsertTypeEmploye(designationAr, designationFr: String);
+procedure UpdateTypeEmploye(code, designationAr, designationFr: String);
+procedure DeleteTypeEmploye(code: String);
 
 implementation
 
@@ -272,6 +275,44 @@ begin
   q.Free;
 end;
 
+procedure InsertTypeEmploye(designationAr, designationFr: String);
+var q: TADOQuery;
+begin
+  q := TADOQuery.Create(nil);
+  q.Connection := dm.ADOConnection1;
+  q.sql.Text := 'INSERT INTO typeemploye (code_temp, designation_ar, designation_fr)'
+  + ' VALUES ((SELECT ISNULL(FORMAT(MAX(code_temp)+1,''00''),''01'') FROM typeemploye),'
+  + quotedstr(designationAr) + ',';
+  + quotedstr(designationFr) + ')';
+  q.ExecSQL;
+  q.Close;
+  q.Free;
+end;
+
+procedure UpdateTypeEmploye(code, designationAr, designationFr: String);
+var q :TADOQuery;
+begin
+  q := TADOQuery.Create(nil);
+  q.Connection := dm.ADOConnection1;
+  q.sql.Text :='UPDATE typeemploye SET designation_ar = '+quotedstr(designationAr)
+      +  ', designation_fr = ' + quotedstr(designationFr)
+      + 'WHERE code_temp = ' + quotedstr(code);
+  q.ExecSQL;
+  q.Close;
+  q.Free;
+end;
+
+
+procedure DeleteTypeEmploye(code: String);
+var q :TADOQuery;
+begin
+  q := TADOQuery.Create(nil);
+  q.Connection := dm.ADOConnection1;
+  q.sql.Text := 'DELETE FROM typeemploye WHERE code_temp = '+ quotedstr(code);
+  q.ExecSQL;
+  q.Close;
+  q.Free;
+end;
 
 
 
