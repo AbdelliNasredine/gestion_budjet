@@ -7,8 +7,8 @@ object dm: Tdm
   object ADOConnection1: TADOConnection
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Adm1n1strateur;Persist Security Inf' +
-      'o=True;User ID=sa;Initial Catalog=gestion_budget;Data Source=NAS' +
-      'RO-DEV'
+      'o=True;User ID=sa;Initial Catalog=gestion_budget;Data Source=ser' +
+      'ver2'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 256

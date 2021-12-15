@@ -8,7 +8,8 @@ uses
   sTabControl, sPageControl, sStatusBar, sSkinProvider, acHeaderControl,
   ImgList, acAlphaImageList, StdCtrls, Buttons, sBitBtn, acCoolBar, Mask,
   sMaskEdit, sCustomComboEdit, sComboBox, sGroupBox, ExtCtrls, DBCtrls,
-  sPanel, DB, ADODB, sLabel, Grids, DBGrids, dbcgrids;
+  sPanel, DB, ADODB, sLabel, Grids, DBGrids, dbcgrids, sEdit, sButton,
+  sScrollBox;
 
 type
   TMainForm = class(TForm)
@@ -26,19 +27,6 @@ type
     pageControle: TsPageControl;
     budjet: TsTabSheet;
     engagements: TsTabSheet;
-    sTabSheet2: TsTabSheet;
-    sGroupBox1: TsGroupBox;
-    edtCodeEnt: TLabeledEdit;
-    edtNominationEntAr: TLabeledEdit;
-    edtNominationEnt: TLabeledEdit;
-    edtCodeMinEnt: TLabeledEdit;
-    edtServiceEnt: TLabeledEdit;
-    edtComptTreEnt: TLabeledEdit;
-    btnSave: TsBitBtn;
-    sGroupBox2: TsGroupBox;
-    sComboBox1: TsComboBox;
-    sBitBtn1: TsBitBtn;
-    sGroupBox3: TsGroupBox;
     cbxRubrique: TsComboBox;
     cbxSections: TsComboBox;
     cbxChapitres: TsComboBox;
@@ -54,9 +42,51 @@ type
     btnAddArticle: TsBitBtn;
     btnEditArticle: TsBitBtn;
     cbxBranches: TsComboBox;
-    sAlphaImageList1: TsAlphaImageList;
-    edtWilayaAr: TLabeledEdit;
-    edtWilaya: TLabeledEdit;
+    gbxNewBranche: TsGroupBox;
+    edtDesigniationBrancheFr: TsEdit;
+    edtBrancheFr: TsEdit;
+    edtBrancheAr: TsEdit;
+    edtDesigniationBrancheAr: TsEdit;
+    btnSaveBranche: TsButton;
+    sPanel1: TsPanel;
+    sPanel2: TsPanel;
+    panelBranches: TsPanel;
+    panelRubriques: TsPanel;
+    gbxNewRubrique: TsGroupBox;
+    edtDesigniationRubriqueFr: TsEdit;
+    edtRubriqueFr: TsEdit;
+    edtRubriqueAr: TsEdit;
+    edtDesigniationRubriqueAr: TsEdit;
+    sPanel3: TsPanel;
+    btnSaveRubrique: TsButton;
+    panelSections: TsPanel;
+    gbxNewSection: TsGroupBox;
+    edtDesigniationSectionFr: TsEdit;
+    edtSectionFr: TsEdit;
+    edtSectionAr: TsEdit;
+    edtDesigniationSectionAr: TsEdit;
+    sPanel4: TsPanel;
+    btnSaveSection: TsButton;
+    panelChapiters: TsPanel;
+    gbxNexChapitre: TsGroupBox;
+    edtChapitre: TsEdit;
+    edtDesignationChapitreAr: TsEdit;
+    sPanel5: TsPanel;
+    btnSaveChapiter: TsButton;
+    edtMontantChapiter: TsMaskEdit;
+    panelArticles: TsPanel;
+    gbxNewArticle: TsGroupBox;
+    edt: TsEdit;
+    sEdit2: TsEdit;
+    sPanel6: TsPanel;
+    sButton2: TsButton;
+    sMaskEdit2: TsMaskEdit;
+    sEdit5: TsEdit;
+    sMaskEdit1: TsMaskEdit;
+    N3: TMenuItem;
+    t1: TMenuItem;
+    N4: TMenuItem;
+    N5: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pageControleChange(Sender: TObject);
     procedure btnAddBrancheClick(Sender: TObject);
@@ -71,6 +101,17 @@ type
     procedure FormShow(Sender: TObject);
     procedure Q2Click(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
+    procedure btnAddRubriqueClick(Sender: TObject);
+    procedure btnSaveBrancheClick(Sender: TObject);
+    procedure btnSaveRubriqueClick(Sender: TObject);
+    procedure btnAddSectionClick(Sender: TObject);
+    procedure btnAddChapitreClick(Sender: TObject);
+    procedure btnAddArticleClick(Sender: TObject);
+    procedure btnSaveSectionClick(Sender: TObject);
+    procedure btnSaveChapiterClick(Sender: TObject);
+    procedure N4Click(Sender: TObject);
+    procedure t1Click(Sender: TObject);
+    procedure N5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -82,7 +123,8 @@ var
 
 implementation
 
-uses Auth, uValidation, uAddBranch, uDataModule, uHelpers;
+uses Auth, uValidation, uAddBranch, uDataModule, uHelpers, uBanques,
+  uTypeEmployee, uTypeEngagement;
 
 {$R *.dfm}
 
@@ -184,7 +226,7 @@ begin
     qryEntreprise.SQL.Clear;
     qryEntreprise.SQL.Add('SELECT TOP 1 * FROM entreprise');
     qryEntreprise.Open;
-    edtCodeEnt.Text := qryEntreprise.FieldValues['Code_En'];
+    // edtCodeEnt.Text := qryEntreprise.FieldValues['Code_En'];
     edtNominationEnt.Text := qryEntreprise.FieldValues['nomination_FR'];
     edtNominationEntAr.Text := qryEntreprise.FieldValues['nomination_AR'];
     edtWilaya.Text := qryEntreprise.FieldValues['wilaya_FR'];
@@ -213,7 +255,12 @@ end;
 
 procedure TMainForm.btnAddBrancheClick(Sender: TObject);
 begin
-  fAddBranch.ShowModal;
+  // fAddBranch.ShowModal;
+  gbxNewBranche.Visible := not gbxNewBranche.Visible;
+  if gbxNewBranche.Visible then
+    panelBranches.Height :=  248
+  else
+    panelBranches.Height :=  40;
 end;
 
 procedure TMainForm.btnEditBrancheClick(Sender: TObject);
@@ -269,6 +316,174 @@ begin
     begin
       // update
     end;
+end;
+
+procedure TMainForm.btnAddRubriqueClick(Sender: TObject);
+begin
+  gbxNewRubrique.Visible := not gbxNewRubrique.Visible;
+  if gbxNewRubrique.Visible then
+    panelRubriques.Height := 248
+  else
+    panelRubriques.Height := 40;
+end;
+
+procedure TMainForm.btnSaveBrancheClick(Sender: TObject);
+begin
+ // validation
+  validateRequired(edtDesigniationBrancheFr.Text, 'Designiation');
+  validateRequired(edtBrancheFr.Text, 'Branche');
+  validateRequired(edtDesigniationBrancheAr.Text, '«· ”„Ì… «·›—⁄');
+  validateRequired(edtBrancheAr.Text, '«·›—⁄');
+
+  // insert new branche
+  InsertBranche(
+    edtDesigniationBrancheFr.Text,
+    edtDesigniationBrancheAr.Text,
+    edtBrancheFr.Text,
+    edtBrancheAr.Text
+  );
+
+  // empty the fields
+  edtDesigniationBrancheFr.Text := '';
+  edtBrancheFr.Text := '';
+  edtDesigniationBrancheAr.Text := '';
+  edtBrancheAr.Text := '';
+
+  // reload budget
+  loadBudget;
+
+end;
+
+procedure TMainForm.btnSaveRubriqueClick(Sender: TObject);
+var codeBranche: String;
+begin
+  requiredEdit(edtRubriqueAr);
+  requiredEdit(edtRubriqueFr);
+  requiredEdit(edtDesigniationRubriqueAr);
+  requiredEdit(edtDesigniationRubriqueFr);
+
+  // getting select branche
+  if cbxBranches.Text <> '' then
+    begin
+     codeBranche := GetBrancheCodeByField('designation_ar', cbxBranches.Text);
+
+     InsertRubrique(
+      codeBranche,
+      edtRubriqueAr.Text,
+      edtRubriqueFr.Text,
+      edtDesigniationRubriqueAr.Text,
+      edtDesigniationRubriqueFr.Text
+     );
+
+     edtRubriqueAr.Text := '';
+     edtRubriqueFr.Text := '';
+     edtDesigniationRubriqueAr.Text := '';
+     edtDesigniationRubriqueFr.Text := '';
+
+     loadBudget;
+    end
+  else
+    messagedlg('—Ã«¡« «Œ — «·›—⁄', mtWarning, [mbOK], 0);
+end;
+
+procedure TMainForm.btnAddSectionClick(Sender: TObject);
+begin
+  gbxNewSection.Visible := not gbxNewSection.Visible;
+  if gbxNewSection.Visible then
+    panelSections.Height := 248
+  else
+    panelSections.Height := 40;
+end;
+
+procedure TMainForm.btnAddChapitreClick(Sender: TObject);
+begin
+  gbxNexChapitre.Visible := not gbxNexChapitre.Visible;
+  if gbxNexChapitre.Visible then
+    panelChapiters.Height := 200
+  else
+    panelChapiters.Height := 40;
+end;
+
+procedure TMainForm.btnAddArticleClick(Sender: TObject);
+begin
+  gbxNewArticle.Visible := not gbxNewArticle.Visible;
+  if gbxNewArticle.Visible then
+    panelArticles.Height := 245
+  else
+    panelArticles.Height := 40;
+
+end;
+
+procedure TMainForm.btnSaveSectionClick(Sender: TObject);
+var codeRubrique : String;
+begin
+  if cbxRubrique.Text <> '' then
+    begin
+      codeRubrique := GetRubriqueCodeByField('designation_ar', cbxRubrique.Text);
+
+      InsertSection(
+        codeRubrique,
+        edtDesigniationSectionFr.Text,
+        edtDesigniationSectionAr.Text,
+        edtSectionFr.Text,
+        edtSectionAr.Text
+      );
+
+      edtDesigniationSectionFr.Text := '';
+      edtDesigniationSectionAr.Text := '';
+      edtSectionFr.Text := '';
+      edtSectionAr.Text := '';
+
+      loadBudget;
+    end
+  else
+    begin
+        messagedlg('—Ã«¡« «Œ — ⁄‰Ê«‰', mtWarning, [mbOK], 0);
+    end;
+end;
+
+procedure TMainForm.btnSaveChapiterClick(Sender: TObject);
+var codeSection: String;
+begin
+  if cbxSections.Text <> '' then
+    begin
+      codeSection := GetSectionCodeByField('designation_ar', cbxSections.Text);
+
+      InsertChapiter(
+        codeSection,
+        '',
+        edtDesignationChapitreAr.Text,
+        edtChapitre.Text,
+        edtMontantChapiter.Text
+      );
+
+      edtDesignationChapitreAr.Text := '';
+      edtChapitre.Text := '';
+      edtMontantChapiter.Text := '';
+
+      loadBudget;
+    end
+  else
+    messagedlg('—Ã«¡« «Œ — «·ﬁ”„', mtWarning, [mbOK], 0);
+
+end;
+
+
+
+
+procedure TMainForm.N4Click(Sender: TObject);
+begin
+  fBanque.ShowModal;
+end;
+
+procedure TMainForm.t1Click(Sender: TObject);
+begin
+  fTypeEmployee.ShowModal;
+end;
+
+procedure TMainForm.N5Click(Sender: TObject);
+begin
+  fTypeEngagement.ShowModal;
 end;
 
 end.

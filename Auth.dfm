@@ -1,8 +1,8 @@
 object AuthForm: TAuthForm
-  Left = -716
-  Top = 573
-  Width = 382
-  Height = 204
+  Left = -1448
+  Top = -8
+  Width = 1456
+  Height = 886
   AlphaBlend = True
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Connexion - Gestion Budjet'

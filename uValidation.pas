@@ -2,11 +2,11 @@ unit uValidation;
 
 interface
 
-uses SysUtils, Dialogs;
+uses SysUtils, Dialogs, sEdit;
 
-Procedure validateRequired(value: String; name: String);
 Function isEmpty(value : String) : Boolean;
-//Procedure validateMaxLength(value: String, errMessage: String);
+Procedure validateRequired(value: String; name: String);
+Procedure requiredEdit(edit: TsEdit);
 
 implementation
 
@@ -25,6 +25,11 @@ begin
     messageDlg('Champ "'+ name + '" ne peut pas étre vide', mtError, [mbOK], 0);
     abort;
   end;
+end;
+
+Procedure requiredEdit(edit: TsEdit);
+begin
+  validateRequired(edit.Text, edit.BoundLabel.Caption);
 end;
 
 end.

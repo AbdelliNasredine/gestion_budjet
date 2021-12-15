@@ -1,6 +1,6 @@
 object fAddBranch: TfAddBranch
-  Left = -1123
-  Top = 9
+  Left = 72
+  Top = 247
   BorderStyle = bsDialog
   Caption = 'Nouveau Branch'
   ClientHeight = 243
@@ -89,9 +89,9 @@ object fAddBranch: TfAddBranch
       Top = 88
       Width = 250
       Height = 25
-      EditLabel.Width = 41
+      EditLabel.Width = 46
       EditLabel.Height = 17
-      EditLabel.Caption = #199#225#202#211#227#237#201
+      EditLabel.Caption = 'C?E???E'
       EditLabel.Color = clInactiveCaption
       EditLabel.Font.Charset = ARABIC_CHARSET
       EditLabel.Font.Color = clWindowText
@@ -115,9 +115,9 @@ object fAddBranch: TfAddBranch
       Top = 128
       Width = 250
       Height = 25
-      EditLabel.Width = 27
+      EditLabel.Width = 32
       EditLabel.Height = 17
-      EditLabel.Caption = #199#225#221#209#218
+      EditLabel.Caption = 'C????'
       EditLabel.Color = clInactiveCaption
       EditLabel.Font.Charset = ARABIC_CHARSET
       EditLabel.Font.Color = clWindowText
