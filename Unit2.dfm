@@ -1,9 +1,9 @@
 object Form2: TForm2
-  Left = 187
-  Top = 117
-  Width = 982
-  Height = 788
-  VertScrollBar.Position = 280
+  Left = 163
+  Top = 44
+  Width = 1226
+  Height = 663
+  HorzScrollBar.Position = 151
   Caption = 'Form2'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,8 +17,8 @@ object Form2: TForm2
   TextHeight = 13
   object QuickRep1: TQuickRep
     Tag = 1
-    Left = 0
-    Top = -144
+    Left = -151
+    Top = 136
     Width = 1344
     Height = 1056
     Frame.Color = clBlack
@@ -143,8 +143,8 @@ object Form2: TForm2
         Size.Values = (
           193.145833333333300000
           373.062500000000000000
-          42.333333333333340000
-          542.395833333333400000)
+          42.333333333333330000
+          542.395833333333300000)
         Alignment = taCenter
         AlignToBand = False
         AutoSize = True
@@ -1164,9 +1164,9 @@ object Form2: TForm2
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          60.854166666666680000
+          60.854166666666670000
           2561.166666666667000000
-          719.666666666666800000
+          719.666666666666700000
           338.666666666666700000)
         Alignment = taRightJustify
         AlignToBand = False
@@ -1263,10 +1263,10 @@ object Form2: TForm2
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          60.854166666666680000
-          2939.520833333334000000
+          60.854166666666670000
+          2939.520833333333000000
           1735.666666666667000000
-          320.145833333333400000)
+          320.145833333333300000)
         Alignment = taRightJustify
         AlignToBand = False
         AutoSize = True
@@ -1299,7 +1299,7 @@ object Form2: TForm2
           150.812500000000000000
           2037.291666666667000000
           127.000000000000000000
-          939.270833333333400000)
+          939.270833333333300000)
         Alignment = taCenter
         AlignToBand = False
         AutoSize = True
@@ -1877,6 +1877,7 @@ object Form2: TForm2
     end
   end
   object ADOQuery1: TADOQuery
+    Active = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Adm1n1strateur;Persist Security Inf' +
       'o=True;User ID=sa;Initial Catalog=gestion_budget;Data Source=ser' +
@@ -1884,23 +1885,27 @@ object Form2: TForm2
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
+      'select'
+      '  *,'
       
-        'select *,a.montant-(select sum(montant_e1+montant_e2+montant_e3+' +
-        'montant_e4) from fiche_engagement where code_a=e.code_a)+(montan' +
-        't_e1+montant_e2+montant_e3+montant_e4) as compte_anc, dbo.nombre' +
-        '_en_chiffre_ar(floor(montant_e1+montant_e2+montant_e3+montant_e4' +
-        ')) as nombre_en_chiffre, round((montant_e1+montant_e2+montant_e3' +
-        '+montant_e4)-floor(montant_e1+montant_e2+montant_e3+montant_e4),' +
-        '2,1)*100 as dec from fiche_engagement e, typemploye emp, banques' +
-        ' b, articles a, chapitres ch'
+        '  a.montant - (select sum(montant_e1+montant_e2+montant_e3+monta' +
+        'nt_e4) from fiche_engagement where code_a=e.code_a) + (montant_e' +
+        '1+montant_e2+montant_e3+montant_e4) as compte_anc,'
+      
+        '  dbo.nombre_en_chiffre_ar(floor(montant_e1+montant_e2+montant_e' +
+        '3+montant_e4)) as nombre_en_chiffre, round((montant_e1+montant_e' +
+        '2+montant_e3+montant_e4)-floor(montant_e1+montant_e2+montant_e3+' +
+        'montant_e4),2,1)*100 as dec from fiche_engagement e, typemploye ' +
+        'emp, banques b, articles a, chapitres ch'
       'where e.code_temp=emp.code_temp'
       'and e.code_banq=b.code_banq'
       'and e.code_a=a.code_a'
-      'and ch.code_ch=substring(a.code_a,1,8)')
+      'and ch.code_ch=substring(a.code_a,1,8);')
     Left = 8
     Top = 8
   end
   object entreprise: TADOQuery
+    Active = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Adm1n1strateur;Persist Security Inf' +
       'o=True;User ID=sa;Initial Catalog=gestion_budget;Data Source=ser' +

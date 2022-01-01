@@ -1,9 +1,10 @@
 object AuthForm: TAuthForm
-  Left = -1448
-  Top = -8
-  Width = 1456
-  Height = 886
+  Left = 338
+  Top = 266
+  Width = 369
+  Height = 192
   AlphaBlend = True
+  AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Connexion - Gestion Budjet'
   Color = clBtnFace
@@ -17,8 +18,8 @@ object AuthForm: TAuthForm
   PixelsPerInch = 96
   TextHeight = 20
   object GroupBox1: TGroupBox
-    Left = 8
-    Top = 8
+    Left = 0
+    Top = 0
     Width = 353
     Height = 113
     Caption = 'Information de connexion'
@@ -896,8 +897,8 @@ object AuthForm: TAuthForm
     end
   end
   object btnConnexion: TBitBtn
-    Left = 136
-    Top = 128
+    Left = 128
+    Top = 120
     Width = 107
     Height = 33
     Caption = 'Connexion'
@@ -947,8 +948,8 @@ object AuthForm: TAuthForm
       000000000000}
   end
   object btnQuiter: TBitBtn
-    Left = 256
-    Top = 128
+    Left = 248
+    Top = 120
     Width = 105
     Height = 33
     Caption = 'Quiter'

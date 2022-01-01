@@ -1,9 +1,10 @@
 object MainForm: TMainForm
-  Left = -1264
-  Top = 1
-  Width = 1269
-  Height = 763
-  Align = alCustom
+  Left = 67
+  Top = 21
+  Width = 1224
+  Height = 702
+  AlphaBlend = True
+  BiDiMode = bdLeftToRight
   Caption = 'Principale - Gestion Budjet'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,24 +14,26 @@ object MainForm: TMainForm
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poScreenCenter
+  ParentBiDiMode = False
+  Position = poOwnerFormCenter
+  WindowState = wsMaximized
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object sStatusBar1: TsStatusBar
     Left = 0
-    Top = 685
-    Width = 1253
+    Top = 624
+    Width = 1208
     Height = 19
     Panels = <>
   end
   object pageControle: TsPageControl
     Left = 0
     Top = 0
-    Width = 1253
-    Height = 685
-    ActivePage = budjet
+    Width = 1208
+    Height = 624
+    ActivePage = engagements
     Align = alClient
     BiDiMode = bdRightToLeft
     Font.Charset = DEFAULT_CHARSET
@@ -59,8 +62,8 @@ object MainForm: TMainForm
       object sPanel2: TsPanel
         Left = 0
         Top = 0
-        Width = 1245
-        Height = 630
+        Width = 1200
+        Height = 569
         Align = alClient
         DoubleBuffered = False
         Font.Charset = DEFAULT_CHARSET
@@ -72,18 +75,18 @@ object MainForm: TMainForm
         TabOrder = 0
         object panelBranches: TsPanel
           Left = 1
-          Top = 1
-          Width = 1243
+          Top = 81
+          Width = 1198
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 0
           DesignSize = (
-            1243
+            1198
             40)
-          object btnEditBranche: TsBitBtn
-            Left = 226
+          object btnAddBranche: TsBitBtn
+            Left = 221
             Top = 8
             Width = 32
             Height = 28
@@ -95,29 +98,12 @@ object MainForm: TMainForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 0
-            OnClick = btnEditBrancheClick
-            ImageIndex = 7
-            Images = actionsIcons
-          end
-          object btnAddBranche: TsBitBtn
-            Left = 266
-            Top = 8
-            Width = 32
-            Height = 28
-            Anchors = [akTop, akRight]
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 1
             OnClick = btnAddBrancheClick
             ImageIndex = 5
             Images = actionsIcons
           end
           object cbxBranches: TsComboBox
-            Left = 309
+            Left = 264
             Top = 8
             Width = 800
             Height = 28
@@ -125,8 +111,8 @@ object MainForm: TMainForm
             BiDiMode = bdRightToLeft
             DoubleBuffered = False
             ParentBiDiMode = False
-            TabOrder = 2
-            Color = clWhite
+            TabOrder = 1
+            OnChange = cbxBranchesChange
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
@@ -144,10 +130,10 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object gbxNewBranche: TsGroupBox
-            Left = 227
+            Left = 221
             Top = 44
-            Width = 885
-            Height = 193
+            Width = 846
+            Height = 197
             Anchors = [akTop, akRight]
             Caption = #1601#1585#1593
             Font.Charset = DEFAULT_CHARSET
@@ -156,23 +142,22 @@ object MainForm: TMainForm
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             BoxStyle = bsStandard
             DesignSize = (
-              885
-              193)
+              846
+              197)
             object edtDesigniationBrancheFr: TsEdit
-              Left = 358
+              Left = 319
               Top = 112
               Width = 250
-              Height = 25
+              Height = 29
               Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
-              Font.Height = -13
+              Font.Height = -16
               Font.Name = 'Segoe UI'
               Font.Style = []
               ParentBiDiMode = False
@@ -180,26 +165,25 @@ object MainForm: TMainForm
               TabOrder = 0
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = 'Designiation'
+              BoundLabel.Caption = #1578#1587#1605#1610#1577' '#1575#1604#1601#1585#1593' ('#1575#1604#1601#1585#1606#1587#1610#1577')'
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
               BoundLabel.Font.Name = 'Segoe UI'
               BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
+              BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
             end
             object edtBrancheFr: TsEdit
-              Left = 614
+              Left = 575
               Top = 112
               Width = 250
-              Height = 25
+              Height = 29
               Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
-              Font.Height = -13
+              Font.Height = -16
               Font.Name = 'Segoe UI'
               Font.Style = []
               ParentBiDiMode = False
@@ -207,25 +191,24 @@ object MainForm: TMainForm
               TabOrder = 1
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = 'Branche'
+              BoundLabel.Caption = #1575#1604#1601#1585#1593' ('#1575#1604#1601#1585#1606#1587#1610#1577')'
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
               BoundLabel.Font.Name = 'Segoe UI'
               BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
+              BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
             end
             object edtBrancheAr: TsEdit
-              Left = 614
+              Left = 575
               Top = 55
               Width = 250
-              Height = 28
+              Height = 29
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
-              Font.Height = -15
+              Font.Height = -16
               Font.Name = 'Segoe UI'
               Font.Style = []
               ParentFont = False
@@ -242,15 +225,14 @@ object MainForm: TMainForm
               BoundLabel.ParentFont = False
             end
             object edtDesigniationBrancheAr: TsEdit
-              Left = 358
+              Left = 319
               Top = 55
               Width = 250
-              Height = 28
+              Height = 29
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
-              Font.Height = -15
+              Font.Height = -16
               Font.Name = 'Segoe UI'
               Font.Style = []
               ParentFont = False
@@ -268,8 +250,8 @@ object MainForm: TMainForm
             end
             object sPanel1: TsPanel
               Left = 2
-              Top = 153
-              Width = 881
+              Top = 157
+              Width = 842
               Height = 38
               Align = alBottom
               Alignment = taRightJustify
@@ -277,10 +259,10 @@ object MainForm: TMainForm
               DoubleBuffered = False
               TabOrder = 4
               DesignSize = (
-                881
+                842
                 38)
               object btnSaveBranche: TsButton
-                Left = 760
+                Left = 721
                 Top = 5
                 Width = 112
                 Height = 28
@@ -289,53 +271,99 @@ object MainForm: TMainForm
                 Caption = #1575#1590#1575#1601#1577
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -13
+                Font.Height = -15
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
                 ParentBiDiMode = False
                 ParentFont = False
                 TabOrder = 0
                 OnClick = btnSaveBrancheClick
-                Images = actionsIcons
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
-              object TsButton
-                Left = 640
+              object btnEditBranche: TsButton
+                Left = 601
                 Top = 5
                 Width = 112
                 Height = 28
                 Anchors = [akTop, akRight, akBottom]
                 BiDiMode = bdRightToLeft
-                Caption = #1575#1604#1594#1575#1569
+                Caption = #1578#1593#1583#1610#1604
+                Enabled = False
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -13
+                Font.Height = -15
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
                 ParentBiDiMode = False
                 ParentFont = False
                 TabOrder = 1
+                OnClick = btnEditBrancheClick
                 ImageAlignment = iaRight
-                ImageIndex = 5
+                ImageIndex = 7
               end
+              object btnDeleteBranche: TsButton
+                Left = 481
+                Top = 5
+                Width = 112
+                Height = 28
+                Anchors = [akTop, akRight, akBottom]
+                BiDiMode = bdRightToLeft
+                Caption = #1581#1583#1601
+                Enabled = False
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -15
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentBiDiMode = False
+                ParentFont = False
+                TabOrder = 2
+                OnClick = btnDeleteBrancheClick
+                ImageAlignment = iaRight
+                ImageIndex = 3
+              end
+            end
+            object sEdit2: TsEdit
+              Left = 7
+              Top = 23
+              Width = 66
+              Height = 28
+              Anchors = [akTop, akRight]
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 5
+              Visible = False
+              OnChange = sEdit2Change
+              BoundLabel.Indent = 4
+              BoundLabel.Font.Charset = DEFAULT_CHARSET
+              BoundLabel.Font.Color = clWindowText
+              BoundLabel.Font.Height = -13
+              BoundLabel.Font.Name = 'Segoe UI'
+              BoundLabel.Font.Style = []
+              BoundLabel.Layout = sclTopLeft
+              BoundLabel.ParentFont = False
             end
           end
         end
         object panelRubriques: TsPanel
           Left = 1
-          Top = 41
-          Width = 1243
+          Top = 121
+          Width = 1198
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 1
           DesignSize = (
-            1243
+            1198
             40)
           object cbxRubrique: TsComboBox
-            Left = 309
+            Left = 264
             Top = 5
             Width = 800
             Height = 28
@@ -344,7 +372,7 @@ object MainForm: TMainForm
             DoubleBuffered = False
             ParentBiDiMode = False
             TabOrder = 0
-            Color = clWhite
+            OnChange = cbxRubriqueChange
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
@@ -361,8 +389,8 @@ object MainForm: TMainForm
             BoundLabel.Font.Style = [fsBold]
             BoundLabel.ParentFont = False
           end
-          object btnEditRubrique: TsBitBtn
-            Left = 226
+          object btnAddRubrique: TsBitBtn
+            Left = 221
             Top = 5
             Width = 32
             Height = 28
@@ -374,30 +402,14 @@ object MainForm: TMainForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 1
-            ImageIndex = 7
-            Images = actionsIcons
-          end
-          object btnAddRubrique: TsBitBtn
-            Left = 266
-            Top = 5
-            Width = 32
-            Height = 28
-            Anchors = [akTop, akRight]
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
             OnClick = btnAddRubriqueClick
             ImageIndex = 5
             Images = actionsIcons
           end
           object gbxNewRubrique: TsGroupBox
-            Left = 227
+            Left = 224
             Top = 40
-            Width = 885
+            Width = 845
             Height = 193
             Anchors = [akTop, akRight]
             Caption = #1593#1606#1608#1575#1606
@@ -407,20 +419,19 @@ object MainForm: TMainForm
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             BoxStyle = bsStandard
             DesignSize = (
-              885
+              845
               193)
             object edtDesigniationRubriqueFr: TsEdit
-              Left = 358
+              Left = 318
               Top = 112
               Width = 250
               Height = 25
               Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -13
@@ -431,23 +442,22 @@ object MainForm: TMainForm
               TabOrder = 0
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = 'Designiation'
+              BoundLabel.Caption = #1578#1587#1605#1610#1577' '#1575#1604#1593#1606#1608#1575#1606' ('#1575#1604#1601#1585#1606#1587#1610#1577')'
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
               BoundLabel.Font.Name = 'Segoe UI'
               BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
+              BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
             end
             object edtRubriqueFr: TsEdit
-              Left = 614
+              Left = 574
               Top = 112
               Width = 250
               Height = 25
               Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -13
@@ -458,22 +468,21 @@ object MainForm: TMainForm
               TabOrder = 1
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = 'Rubrique'
+              BoundLabel.Caption = #1575#1604#1593#1606#1608#1575#1606'('#1575#1604#1601#1585#1606#1587#1610#1577')'
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
               BoundLabel.Font.Name = 'Segoe UI'
               BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
+              BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
             end
             object edtRubriqueAr: TsEdit
-              Left = 614
+              Left = 574
               Top = 55
               Width = 250
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -493,12 +502,11 @@ object MainForm: TMainForm
               BoundLabel.ParentFont = False
             end
             object edtDesigniationRubriqueAr: TsEdit
-              Left = 358
+              Left = 318
               Top = 55
               Width = 250
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -520,7 +528,7 @@ object MainForm: TMainForm
             object sPanel3: TsPanel
               Left = 2
               Top = 153
-              Width = 881
+              Width = 841
               Height = 38
               Align = alBottom
               Alignment = taRightJustify
@@ -528,10 +536,10 @@ object MainForm: TMainForm
               DoubleBuffered = False
               TabOrder = 4
               DesignSize = (
-                881
+                841
                 38)
               object btnSaveRubrique: TsButton
-                Left = 760
+                Left = 720
                 Top = 5
                 Width = 112
                 Height = 28
@@ -540,7 +548,7 @@ object MainForm: TMainForm
                 Caption = #1575#1590#1575#1601#1577
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -13
+                Font.Height = -15
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
                 ParentBiDiMode = False
@@ -550,17 +558,18 @@ object MainForm: TMainForm
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
-              object TsButton
-                Left = 640
+              object btnEditRb: TsButton
+                Left = 600
                 Top = 5
                 Width = 112
                 Height = 28
                 Anchors = [akTop, akRight, akBottom]
                 BiDiMode = bdRightToLeft
-                Caption = #1575#1604#1594#1575#1569
+                Caption = #1578#1593#1583#1610#1604
+                Enabled = False
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
-                Font.Height = -13
+                Font.Height = -15
                 Font.Name = 'Segoe UI'
                 Font.Style = [fsBold]
                 ParentBiDiMode = False
@@ -569,23 +578,67 @@ object MainForm: TMainForm
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
+              object btnDeleteRb: TsButton
+                Left = 480
+                Top = 5
+                Width = 112
+                Height = 28
+                Anchors = [akTop, akRight, akBottom]
+                BiDiMode = bdRightToLeft
+                Caption = #1581#1583#1601
+                Enabled = False
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -15
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentBiDiMode = False
+                ParentFont = False
+                TabOrder = 2
+                OnClick = btnDeleteRbClick
+                ImageAlignment = iaRight
+                ImageIndex = 5
+              end
+            end
+            object sEdit5: TsEdit
+              Left = 6
+              Top = 23
+              Width = 83
+              Height = 28
+              Anchors = [akTop, akRight]
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 5
+              Visible = False
+              BoundLabel.Indent = 4
+              BoundLabel.Font.Charset = DEFAULT_CHARSET
+              BoundLabel.Font.Color = clWindowText
+              BoundLabel.Font.Height = -13
+              BoundLabel.Font.Name = 'Segoe UI'
+              BoundLabel.Font.Style = []
+              BoundLabel.Layout = sclTopLeft
+              BoundLabel.ParentFont = False
             end
           end
         end
         object panelSections: TsPanel
           Left = 1
-          Top = 81
-          Width = 1243
+          Top = 161
+          Width = 1198
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 2
           DesignSize = (
-            1243
+            1198
             40)
           object cbxSections: TsComboBox
-            Left = 309
+            Left = 264
             Top = 5
             Width = 800
             Height = 28
@@ -594,7 +647,7 @@ object MainForm: TMainForm
             DoubleBuffered = False
             ParentBiDiMode = False
             TabOrder = 0
-            Color = clWhite
+            OnChange = cbxSectionsChange
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
@@ -612,7 +665,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddSection: TsBitBtn
-            Left = 266
+            Left = 221
             Top = 5
             Width = 32
             Height = 28
@@ -628,26 +681,10 @@ object MainForm: TMainForm
             ImageIndex = 5
             Images = actionsIcons
           end
-          object btnEditSection: TsBitBtn
-            Left = 226
-            Top = 5
-            Width = 32
-            Height = 28
-            Anchors = [akTop, akRight]
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
-            ImageIndex = 7
-            Images = actionsIcons
-          end
           object gbxNewSection: TsGroupBox
-            Left = 227
+            Left = 224
             Top = 40
-            Width = 885
+            Width = 845
             Height = 193
             Anchors = [akTop, akRight]
             Caption = #1602#1587#1605
@@ -657,20 +694,19 @@ object MainForm: TMainForm
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             BoxStyle = bsStandard
             DesignSize = (
-              885
+              845
               193)
             object edtDesigniationSectionFr: TsEdit
-              Left = 358
+              Left = 318
               Top = 112
               Width = 250
               Height = 25
               Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -13
@@ -681,23 +717,22 @@ object MainForm: TMainForm
               TabOrder = 0
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = 'Designiation'
+              BoundLabel.Caption = #1578#1587#1605#1610#1577' '#1575#1604#1602#1587#1605' ('#1575#1604#1601#1585#1606#1587#1610#1577')'
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
               BoundLabel.Font.Name = 'Segoe UI'
               BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
+              BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
             end
             object edtSectionFr: TsEdit
-              Left = 614
+              Left = 574
               Top = 112
               Width = 250
               Height = 25
               Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -13
@@ -708,22 +743,21 @@ object MainForm: TMainForm
               TabOrder = 1
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = 'Section'
+              BoundLabel.Caption = #1575#1604#1602#1587#1605' ('#1575#1604#1601#1585#1606#1587#1610#1577')'
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
               BoundLabel.Font.Name = 'Segoe UI'
               BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
+              BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
             end
             object edtSectionAr: TsEdit
-              Left = 614
+              Left = 574
               Top = 55
               Width = 250
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -743,12 +777,11 @@ object MainForm: TMainForm
               BoundLabel.ParentFont = False
             end
             object edtDesigniationSectionAr: TsEdit
-              Left = 358
+              Left = 318
               Top = 55
               Width = 250
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -770,7 +803,7 @@ object MainForm: TMainForm
             object sPanel4: TsPanel
               Left = 2
               Top = 153
-              Width = 881
+              Width = 841
               Height = 38
               Align = alBottom
               Alignment = taRightJustify
@@ -778,10 +811,10 @@ object MainForm: TMainForm
               DoubleBuffered = False
               TabOrder = 4
               DesignSize = (
-                881
+                841
                 38)
               object btnSaveSection: TsButton
-                Left = 760
+                Left = 720
                 Top = 5
                 Width = 112
                 Height = 28
@@ -800,14 +833,15 @@ object MainForm: TMainForm
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
-              object TsButton
-                Left = 640
+              object btnEditSe: TsButton
+                Left = 600
                 Top = 5
                 Width = 112
                 Height = 28
                 Anchors = [akTop, akRight, akBottom]
                 BiDiMode = bdRightToLeft
-                Caption = #1575#1594#1575#1569
+                Caption = #1578#1593#1583#1610#1604
+                Enabled = False
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -13
@@ -819,39 +853,67 @@ object MainForm: TMainForm
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
+              object btnDeleteSe: TsButton
+                Left = 480
+                Top = 5
+                Width = 112
+                Height = 28
+                Anchors = [akTop, akRight, akBottom]
+                BiDiMode = bdRightToLeft
+                Caption = #1581#1583#1601
+                Enabled = False
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentBiDiMode = False
+                ParentFont = False
+                TabOrder = 2
+                OnClick = btnDeleteSeClick
+                ImageAlignment = iaRight
+                ImageIndex = 5
+              end
+            end
+            object sEdit6: TsEdit
+              Left = 6
+              Top = 23
+              Width = 115
+              Height = 28
+              Anchors = [akTop, akRight]
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 5
+              Visible = False
+              BoundLabel.Indent = 4
+              BoundLabel.Font.Charset = DEFAULT_CHARSET
+              BoundLabel.Font.Color = clWindowText
+              BoundLabel.Font.Height = -13
+              BoundLabel.Font.Name = 'Segoe UI'
+              BoundLabel.Font.Style = []
+              BoundLabel.Layout = sclTopLeft
+              BoundLabel.ParentFont = False
             end
           end
         end
         object panelChapiters: TsPanel
           Left = 1
-          Top = 121
-          Width = 1243
+          Top = 201
+          Width = 1198
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 3
           DesignSize = (
-            1243
+            1198
             40)
-          object btnEditChapitre: TsBitBtn
-            Left = 226
-            Top = 5
-            Width = 32
-            Height = 28
-            Anchors = [akTop, akRight]
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 0
-            ImageIndex = 7
-            Images = actionsIcons
-          end
           object cbxChapitres: TsComboBox
-            Left = 309
+            Left = 264
             Top = 5
             Width = 800
             Height = 28
@@ -859,8 +921,8 @@ object MainForm: TMainForm
             BiDiMode = bdRightToLeft
             DoubleBuffered = False
             ParentBiDiMode = False
-            TabOrder = 1
-            Color = clWhite
+            TabOrder = 0
+            OnChange = cbxChapitresChange
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
@@ -878,7 +940,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddChapitre: TsBitBtn
-            Left = 266
+            Left = 221
             Top = 5
             Width = 32
             Height = 28
@@ -889,37 +951,36 @@ object MainForm: TMainForm
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 2
+            TabOrder = 1
             OnClick = btnAddChapitreClick
             ImageIndex = 5
             Images = actionsIcons
           end
           object gbxNexChapitre: TsGroupBox
-            Left = 225
+            Left = 224
             Top = 40
-            Width = 885
+            Width = 841
             Height = 140
             Anchors = [akTop, akRight]
-            Caption = #1576#1575#1576
+            Caption = #1605#1593#1604#1608#1605#1575#1578' '#1575#1604#1576#1575#1576
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             BoxStyle = bsStandard
             DesignSize = (
-              885
+              841
               140)
             object edtChapitre: TsEdit
-              Left = 795
+              Left = 751
               Top = 55
               Width = 69
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -939,12 +1000,11 @@ object MainForm: TMainForm
               BoundLabel.ParentFont = False
             end
             object edtDesignationChapitreAr: TsEdit
-              Left = 358
+              Left = 314
               Top = 55
               Width = 430
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -966,7 +1026,7 @@ object MainForm: TMainForm
             object sPanel5: TsPanel
               Left = 2
               Top = 100
-              Width = 881
+              Width = 837
               Height = 38
               Align = alBottom
               Alignment = taRightJustify
@@ -974,10 +1034,10 @@ object MainForm: TMainForm
               DoubleBuffered = False
               TabOrder = 2
               DesignSize = (
-                881
+                837
                 38)
               object btnSaveChapiter: TsButton
-                Left = 760
+                Left = 716
                 Top = 5
                 Width = 112
                 Height = 28
@@ -996,14 +1056,14 @@ object MainForm: TMainForm
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
-              object TsButton
-                Left = 640
+              object sButton1: TsButton
+                Left = 596
                 Top = 5
                 Width = 112
                 Height = 28
                 Anchors = [akTop, akRight, akBottom]
                 BiDiMode = bdRightToLeft
-                Caption = #1575#1604#1594#1575#1569
+                Caption = #1581#1583#1601
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -13
@@ -1012,21 +1072,21 @@ object MainForm: TMainForm
                 ParentBiDiMode = False
                 ParentFont = False
                 TabOrder = 1
+                OnClick = sButton1Click
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
             end
             object edtMontantChapiter: TsMaskEdit
-              Left = 136
+              Left = 104
               Top = 56
-              Width = 204
+              Width = 203
               Height = 28
+              Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
               DoubleBuffered = False
-              MaxLength = 8
               ParentBiDiMode = False
               TabOrder = 3
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -1044,25 +1104,47 @@ object MainForm: TMainForm
               BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
               CheckOnExit = True
-              EditMask = '#.###,##;1;_'
-              Text = ' .   ,  '
+            end
+            object sEdit7: TsEdit
+              Left = 7
+              Top = 15
+              Width = 69
+              Height = 28
+              Anchors = [akTop, akRight]
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 4
+              Visible = False
+              BoundLabel.Indent = 4
+              BoundLabel.Caption = #1575#1604#1576#1575#1576
+              BoundLabel.Font.Charset = DEFAULT_CHARSET
+              BoundLabel.Font.Color = clWindowText
+              BoundLabel.Font.Height = -13
+              BoundLabel.Font.Name = 'Segoe UI'
+              BoundLabel.Font.Style = []
+              BoundLabel.Layout = sclTopLeft
+              BoundLabel.ParentFont = False
             end
           end
         end
         object panelArticles: TsPanel
           Left = 1
-          Top = 161
-          Width = 1243
-          Height = 40
+          Top = 241
+          Width = 1198
+          Height = 256
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 4
           DesignSize = (
-            1243
-            40)
+            1198
+            256)
           object cbxArticles: TsComboBox
-            Left = 309
+            Left = 264
             Top = 5
             Width = 800
             Height = 28
@@ -1071,7 +1153,7 @@ object MainForm: TMainForm
             DoubleBuffered = False
             ParentBiDiMode = False
             TabOrder = 0
-            Color = clWhite
+            OnChange = cbxArticlesChange
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
@@ -1089,7 +1171,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddArticle: TsBitBtn
-            Left = 266
+            Left = 221
             Top = 5
             Width = 32
             Height = 28
@@ -1105,48 +1187,31 @@ object MainForm: TMainForm
             ImageIndex = 5
             Images = actionsIcons
           end
-          object btnEditArticle: TsBitBtn
-            Left = 226
-            Top = 5
-            Width = 32
-            Height = 28
-            Anchors = [akTop, akRight]
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
-            ImageIndex = 7
-            Images = actionsIcons
-          end
           object gbxNewArticle: TsGroupBox
-            Left = 227
+            Left = 224
             Top = 40
-            Width = 885
+            Width = 843
             Height = 193
             Anchors = [akTop, akRight]
-            Caption = #1576#1575#1576
+            Caption = #1605#1593#1604#1608#1605#1575#1578' '#1575#1604#1605#1575#1583#1577
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clBlack
             Font.Height = -15
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 3
+            TabOrder = 2
             Visible = False
             BoxStyle = bsStandard
             DesignSize = (
-              885
+              843
               193)
-            object edt: TsEdit
-              Left = 795
-              Top = 55
-              Width = 69
+            object edtDesignationArticleAr: TsEdit
+              Left = 316
+              Top = 56
+              Width = 430
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -1156,32 +1221,7 @@ object MainForm: TMainForm
               TabOrder = 0
               BoundLabel.Active = True
               BoundLabel.Indent = 4
-              BoundLabel.Caption = #1575#1604#1576#1575#1576
-              BoundLabel.Font.Charset = DEFAULT_CHARSET
-              BoundLabel.Font.Color = clWindowText
-              BoundLabel.Font.Height = -13
-              BoundLabel.Font.Name = 'Segoe UI'
-              BoundLabel.Font.Style = []
-              BoundLabel.Layout = sclTopLeft
-              BoundLabel.ParentFont = False
-            end
-            object sEdit2: TsEdit
-              Left = 358
-              Top = 55
-              Width = 430
-              Height = 28
-              Anchors = [akTop, akRight]
-              Color = clWhite
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Height = -15
-              Font.Name = 'Segoe UI'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-              BoundLabel.Active = True
-              BoundLabel.Indent = 4
-              BoundLabel.Caption = #1578#1587#1605#1610#1577' '#1575#1604#1576#1575#1576
+              BoundLabel.Caption = #1578#1587#1605#1610#1577' '#1575#1604#1605#1575#1583#1577
               BoundLabel.Font.Charset = DEFAULT_CHARSET
               BoundLabel.Font.Color = clWindowText
               BoundLabel.Font.Height = -13
@@ -1193,18 +1233,18 @@ object MainForm: TMainForm
             object sPanel6: TsPanel
               Left = 2
               Top = 153
-              Width = 881
+              Width = 839
               Height = 38
               Align = alBottom
               Alignment = taRightJustify
               BevelOuter = bvLowered
               DoubleBuffered = False
-              TabOrder = 2
+              TabOrder = 1
               DesignSize = (
-                881
+                839
                 38)
               object sButton2: TsButton
-                Left = 760
+                Left = 718
                 Top = 5
                 Width = 112
                 Height = 28
@@ -1219,17 +1259,19 @@ object MainForm: TMainForm
                 ParentBiDiMode = False
                 ParentFont = False
                 TabOrder = 0
+                OnClick = sButton2Click
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
-              object TsButton
-                Left = 640
+              object sButton3: TsButton
+                Left = 598
                 Top = 5
                 Width = 112
                 Height = 28
                 Anchors = [akTop, akRight, akBottom]
                 BiDiMode = bdRightToLeft
-                Caption = #1575#1604#1594#1575#1569
+                Caption = #1581#1583#1601
+                Enabled = False
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -13
@@ -1241,18 +1283,34 @@ object MainForm: TMainForm
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
+              object sBitBtn10: TsBitBtn
+                Left = 9
+                Top = 5
+                Width = 165
+                Height = 28
+                Anchors = [akTop, akRight]
+                Caption = #1573#1590#1575#1601#1577' '#1605#1610#1586#1575#1606#1610#1577' '#1573#1590#1575#1601#1610#1577
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 2
+                OnClick = sBitBtn10Click
+                ImageIndex = 0
+              end
             end
-            object sMaskEdit2: TsMaskEdit
-              Left = 656
+            object edtMantantArticle: TsMaskEdit
+              Left = 616
               Top = 112
               Width = 204
               Height = 28
+              Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
               DoubleBuffered = False
-              MaxLength = 8
               ParentBiDiMode = False
-              TabOrder = 3
-              Color = clWhite
+              TabOrder = 2
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -1270,23 +1328,20 @@ object MainForm: TMainForm
               BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
               CheckOnExit = True
-              EditMask = '#.###,##;1;_'
-              Text = ' .   ,  '
             end
-            object sEdit5: TsEdit
-              Left = 263
-              Top = 55
+            object edtDecret: TsEdit
+              Left = 221
+              Top = 56
               Width = 89
               Height = 28
               Anchors = [akTop, akRight]
-              Color = clWhite
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
               Font.Name = 'Segoe UI'
               Font.Style = []
               ParentFont = False
-              TabOrder = 4
+              TabOrder = 3
               BoundLabel.Active = True
               BoundLabel.Indent = 4
               BoundLabel.Caption = #1575#1604#1605#1585#1587#1608#1605
@@ -1298,18 +1353,18 @@ object MainForm: TMainForm
               BoundLabel.Layout = sclTopLeft
               BoundLabel.ParentFont = False
             end
-            object sMaskEdit1: TsMaskEdit
-              Left = 445
+            object edtMantantArticleRest: TsMaskEdit
+              Left = 397
               Top = 112
               Width = 204
               Height = 28
+              Anchors = [akTop, akRight]
               BiDiMode = bdLeftToRight
               DoubleBuffered = False
               Enabled = False
-              MaxLength = 8
               ParentBiDiMode = False
-              TabOrder = 5
-              Color = clWhite
+              TabOrder = 4
+              Visible = False
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -1327,10 +1382,73 @@ object MainForm: TMainForm
               BoundLabel.Layout = sclTopRight
               BoundLabel.ParentFont = False
               CheckOnExit = True
-              EditMask = '#.###,##;1;_'
-              Text = ' .   ,  '
+            end
+            object edtArticle: TsMaskEdit
+              Left = 752
+              Top = 56
+              Width = 66
+              Height = 28
+              Anchors = [akTop, akRight]
+              DoubleBuffered = False
+              TabOrder = 5
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              BoundLabel.Active = True
+              BoundLabel.Caption = #1575#1604#1605#1575#1583#1577
+              BoundLabel.Font.Charset = DEFAULT_CHARSET
+              BoundLabel.Font.Color = clBlack
+              BoundLabel.Font.Height = -13
+              BoundLabel.Font.Name = 'Segoe UI'
+              BoundLabel.Font.Style = []
+              BoundLabel.Layout = sclTopLeft
+              BoundLabel.ParentFont = False
+              CheckOnExit = True
+            end
+            object sEdit8: TsEdit
+              Left = 5
+              Top = 16
+              Width = 124
+              Height = 28
+              Anchors = [akTop, akRight]
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlack
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 6
+              Visible = False
+              BoundLabel.Indent = 4
+              BoundLabel.Font.Charset = DEFAULT_CHARSET
+              BoundLabel.Font.Color = clWindowText
+              BoundLabel.Font.Height = -13
+              BoundLabel.Font.Name = 'Segoe UI'
+              BoundLabel.Font.Style = []
+              BoundLabel.Layout = sclTopLeft
+              BoundLabel.ParentFont = False
             end
           end
+        end
+        object sPanel10: TsPanel
+          Left = 1
+          Top = 1
+          Width = 1198
+          Height = 80
+          Align = alTop
+          BevelOuter = bvLowered
+          Caption = #1578#1587#1610#1610#1585' '#1575#1604#1605#1610#1586#1575#1606#1610#1577
+          DoubleBuffered = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 5
         end
       end
     end
@@ -1343,6 +1461,514 @@ object MainForm: TMainForm
       Font.Style = [fsBold]
       ImageIndex = 2
       ParentFont = False
+      OnShow = engagementsShow
+      object sPanel7: TsPanel
+        Left = 0
+        Top = 0
+        Width = 1200
+        Height = 569
+        Align = alClient
+        BevelOuter = bvNone
+        DoubleBuffered = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        object sGroupBox1: TsGroupBox
+          Left = 0
+          Top = 0
+          Width = 1200
+          Height = 81
+          Align = alTop
+          Caption = #1575#1604#1593#1605#1604#1610#1575#1578
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          object sPanel8: TsPanel
+            Left = 2
+            Top = 23
+            Width = 1196
+            Height = 56
+            Align = alClient
+            BevelOuter = bvNone
+            DoubleBuffered = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            DesignSize = (
+              1196
+              56)
+            object sBitBtn1: TsBitBtn
+              Left = 521
+              Top = 7
+              Width = 123
+              Height = 33
+              Caption = #1575#1590#1575#1601#1577
+              TabOrder = 0
+              OnClick = sBitBtn1Click
+              ImageIndex = 5
+              Images = actionsIcons
+            end
+            object sBitBtn2: TsBitBtn
+              Left = 393
+              Top = 7
+              Width = 123
+              Height = 33
+              Caption = #1591#1576#1593
+              Enabled = False
+              TabOrder = 1
+              OnClick = sBitBtn2Click
+              ImageIndex = 8
+              Images = actionsIcons
+            end
+            object sBitBtn3: TsBitBtn
+              Left = 265
+              Top = 7
+              Width = 123
+              Height = 33
+              Caption = #1578#1593#1583#1610#1604
+              Enabled = False
+              TabOrder = 2
+              ImageIndex = 7
+              Images = actionsIcons
+            end
+            object sBitBtn4: TsBitBtn
+              Left = 137
+              Top = 7
+              Width = 123
+              Height = 33
+              Caption = #1581#1583#1601
+              Enabled = False
+              TabOrder = 3
+              OnClick = sBitBtn4Click
+              ImageIndex = 3
+              Images = actionsIcons
+            end
+            object sEdit1: TsEdit
+              Left = 800
+              Top = 8
+              Width = 49
+              Height = 29
+              TabOrder = 4
+              Visible = False
+              OnChange = sEdit1Change
+              Align = alCustom
+            end
+            object sComboBox1: TsComboBox
+              Left = 728
+              Top = 8
+              Width = 377
+              Height = 29
+              Anchors = [akTop, akRight]
+              DoubleBuffered = False
+              TabOrder = 5
+              OnChange = sComboBox1Change
+              BoundLabel.Active = True
+              BoundLabel.Indent = 5
+              BoundLabel.Caption = #1581#1575#1604#1577' '#1575#1604#1573#1604#1578#1586#1575#1605
+              Items.Strings = (
+                #1578#1571#1588#1610#1585#1577' '#1575#1604#1605#1585#1575#1602#1576' '#1575#1604#1605#1575#1604#1610
+                #1575#1604#1603#1604)
+            end
+            object sBitBtn9: TsBitBtn
+              Left = 9
+              Top = 7
+              Width = 123
+              Height = 33
+              Caption = #1587#1581#1576' '#1575#1604#1573#1604#1578#1586#1575#1605
+              Enabled = False
+              TabOrder = 6
+              OnClick = sBitBtn9Click
+              ImageIndex = 11
+              Images = actionsIcons
+            end
+          end
+        end
+        object sDBGrid1: TsDBGrid
+          Left = 0
+          Top = 81
+          Width = 1200
+          Height = 488
+          Align = alClient
+          BiDiMode = bdRightToLeft
+          Color = clWhite
+          DataSource = dm.dsEngagament
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+          ParentBiDiMode = False
+          ParentFont = False
+          PopupMenu = PopupMenu1
+          ReadOnly = True
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -13
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = [fsBold]
+          OnCellClick = sDBGrid1CellClick
+          DefaultRowHeight = 25
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'code_FE'
+              Title.Caption = #1585#1602#1605
+              Width = 37
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'date_FE'
+              Title.Caption = #1575#1604#1578#1575#1585#1610#1582
+              Width = 109
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'e10'
+              Title.Caption = #1573#1604#1578#1586#1575#1605
+              Width = 531
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'total'
+              Title.Caption = #1575#1604#1605#1580#1605#1608#1593
+              Width = 180
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'sit_e'
+              Title.Caption = #1581#1575#1604#1577' '#1575#1604#1573#1604#1578#1586#1575#1605
+              Width = 354
+              Visible = True
+            end>
+        end
+      end
+    end
+    object sTabSheet1: TsTabSheet
+      Caption = #1575#1604#1578#1581#1608#1610#1604#1575#1578
+      OnShow = sTabSheet1Show
+      object sGroupBox2: TsGroupBox
+        Left = 0
+        Top = 0
+        Width = 1200
+        Height = 217
+        Align = alTop
+        Caption = #1605#1593#1604#1608#1605#1575#1578' '#1575#1604#1578#1581#1608#1610#1604
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        DesignSize = (
+          1200
+          217)
+        object sComboBox2: TsComboBox
+          Left = 733
+          Top = 48
+          Width = 350
+          Height = 29
+          Anchors = [akTop, akRight]
+          DoubleBuffered = False
+          TabOrder = 0
+          BoundLabel.Active = True
+          BoundLabel.Indent = 15
+          BoundLabel.Caption = #1605#1606
+        end
+        object sComboBox3: TsComboBox
+          Left = 312
+          Top = 48
+          Width = 350
+          Height = 29
+          Anchors = [akTop, akRight]
+          DoubleBuffered = False
+          TabOrder = 1
+          BoundLabel.Active = True
+          BoundLabel.Indent = 15
+          BoundLabel.Caption = #1573#1604#1609
+        end
+        object sEdit3: TsEdit
+          Left = 832
+          Top = 96
+          Width = 250
+          Height = 29
+          Anchors = [akTop, akRight]
+          TabOrder = 2
+          OnChange = ge
+          BoundLabel.Active = True
+          BoundLabel.Indent = 15
+          BoundLabel.Caption = #1605#1576#1604#1594' '#1575#1604#1578#1581#1608#1610#1604
+        end
+        object sPanel9: TsPanel
+          Left = 2
+          Top = 157
+          Width = 1196
+          Height = 58
+          Align = alBottom
+          BevelOuter = bvLowered
+          DoubleBuffered = False
+          TabOrder = 3
+          DesignSize = (
+            1196
+            58)
+          object sBitBtn5: TsBitBtn
+            Left = 1056
+            Top = 12
+            Width = 120
+            Height = 35
+            Anchors = [akTop, akRight]
+            Caption = #1575#1590#1575#1601#1577
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 0
+            OnClick = sBitBtn5Click
+            ImageIndex = 5
+            Images = actionsIcons
+          end
+          object sBitBtn6: TsBitBtn
+            Left = 920
+            Top = 12
+            Width = 120
+            Height = 35
+            Anchors = [akTop, akRight]
+            Caption = #1578#1593#1583#1610#1604
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 1
+            OnClick = sBitBtn6Click
+            ImageIndex = 7
+            Images = actionsIcons
+          end
+          object sBitBtn7: TsBitBtn
+            Left = 784
+            Top = 12
+            Width = 120
+            Height = 35
+            Anchors = [akTop, akRight]
+            Caption = #1581#1583#1601
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
+            OnClick = sBitBtn7Click
+            ImageIndex = 3
+            Images = actionsIcons
+          end
+          object sBitBtn8: TsBitBtn
+            Left = 656
+            Top = 12
+            Width = 120
+            Height = 35
+            Anchors = [akTop, akRight]
+            Caption = #1573#1604#1594#1575#1569
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 3
+            OnClick = sBitBtn8Click
+            ImageIndex = 1
+            Images = actionsIcons
+          end
+        end
+        object sEdit4: TsEdit
+          Left = -45
+          Top = 16
+          Width = 47
+          Height = 29
+          Anchors = [akTop, akRight]
+          TabOrder = 4
+          Visible = False
+          OnChange = sEdit4Change
+          BoundLabel.Indent = 15
+          BoundLabel.Caption = #1605#1576#1604#1594' '#1575#1604#1578#1581#1608#1610#1604
+        end
+      end
+      object sDBGrid2: TsDBGrid
+        Left = 0
+        Top = 217
+        Width = 1200
+        Height = 352
+        Align = alClient
+        Color = clWhite
+        DataSource = dm.dsTransfert
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -16
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = [fsBold]
+        OnCellClick = sDBGrid2CellClick
+        DefaultRowHeight = 25
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'code_trans'
+            Title.Caption = #1585#1602#1605' '#1575#1604#1578#1581#1608#1610#1604
+            Width = 85
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'des_out'
+            Title.Caption = #1605#1606' '#1575#1604#1605#1575#1583#1577
+            Width = 500
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'des_in'
+            Title.Caption = #1573#1604#1609' '#1575#1604#1605#1575#1583#1577
+            Width = 480
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'montant_trans'
+            Title.Caption = #1575#1604#1605#1576#1604#1594
+            Width = 159
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'date_trans'
+            Title.Caption = #1578#1575#1585#1610#1582' '#1575#1604#1578#1581#1608#1610#1604
+            Width = 117
+            Visible = True
+          end>
+      end
+    end
+    object sTabSheet2: TsTabSheet
+      Caption = #1603#1588#1608#1601' '#1575#1604#1583#1601#1593
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      object sGroupBox3: TsGroupBox
+        Left = 0
+        Top = 0
+        Width = 1332
+        Height = 97
+        Align = alTop
+        Caption = #1575#1604#1593#1605#1604#1610#1575#1578
+        TabOrder = 0
+        object sBitBtn11: TsBitBtn
+          Left = 1200
+          Top = 40
+          Width = 120
+          Height = 35
+          Caption = #1591#1576#1593
+          Enabled = False
+          TabOrder = 0
+          OnClick = sBitBtn11Click
+          ImageIndex = 8
+          Images = actionsIcons
+        end
+        object sEdit9: TsEdit
+          Left = 0
+          Top = 16
+          Width = 121
+          Height = 29
+          TabOrder = 1
+          Visible = False
+          OnChange = sEdit9Change
+        end
+      end
+      object sDBGrid3: TsDBGrid
+        Left = 0
+        Top = 97
+        Width = 1332
+        Height = 542
+        Align = alClient
+        Color = clWhite
+        DataSource = dm.dsMondat
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -16
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        OnCellClick = sDBGrid3CellClick
+        DefaultRowHeight = 25
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'code_MP'
+            Title.Caption = #1585#1602#1605' '#1575#1604#1581#1608#1575#1604#1577
+            Width = 85
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'date_MP'
+            Title.Caption = #1575#1604#1578#1575#1585#1610#1582
+            Width = 94
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'montant_mp'
+            Title.Caption = #1575#1604#1605#1576#1604#1594
+            Width = 184
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'objet'
+            Title.Caption = #1575#1604#1605#1608#1590#1608#1593
+            Width = 904
+            Visible = True
+          end>
+      end
     end
   end
   object sideMenuIcons: TsCharImageList
@@ -1369,7 +1995,7 @@ object MainForm: TMainForm
       end
     end
     object N3: TMenuItem
-      Caption = 'database'
+      Caption = 'Base de donn'#233'es'
       object t1: TMenuItem
         Caption = #1571#1589#1606#1575#1601' '#1575#1604#1605#1587#1578#1582#1583#1605#1610#1606
         OnClick = t1Click
@@ -1381,6 +2007,13 @@ object MainForm: TMainForm
       object N5: TMenuItem
         Caption = #1571#1606#1608#1575#1593' '#1575#1604#1575#1604#1578#1586#1575#1605
         OnClick = N5Click
+      end
+    end
+    object R1: TMenuItem
+      Caption = 'R'#233'glage'
+      object I1: TMenuItem
+        Caption = 'Information d'#39'entreprise'
+        OnClick = I1Click
       end
     end
     object N1: TMenuItem
@@ -1441,6 +2074,18 @@ object MainForm: TMainForm
       end
       item
         Char = 61504
+      end
+      item
+        Char = 61487
+      end
+      item
+        Char = 61559
+      end
+      item
+        Char = 61560
+      end
+      item
+        Char = 61540
       end>
     Left = 138
     Bitmap = {}
@@ -1454,5 +2099,20 @@ object MainForm: TMainForm
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     Left = 40
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 200
+    object j1: TMenuItem
+      Caption = #1578#1593#1583#1610#1604
+    end
+    object N6: TMenuItem
+      Caption = #1587#1581#1576
+    end
+    object N7: TMenuItem
+      Caption = #1581#1583#1601
+    end
+    object N8: TMenuItem
+      Caption = #1591#1576#1593
+    end
   end
 end

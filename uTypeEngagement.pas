@@ -61,8 +61,8 @@ begin
   if edtTypeEngagement.Text <> '' then
     begin
       InsertTypeEngagement(edtTypeEngagement.Text);
-      dbGrid.DataSource.DataSet.Active := false;
-      dbGrid.DataSource.DataSet.Active := true;
+      refresh;
+      reset;
     end;
 end;
 

@@ -1,9 +1,9 @@
 object fTypeEngagement: TfTypeEngagement
-  Left = -1106
-  Top = 175
+  Left = 270
+  Top = 73
   BorderStyle = bsDialog
   Caption = 'fTypeEngagement'
-  ClientHeight = 306
+  ClientHeight = 333
   ClientWidth = 754
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,14 +20,14 @@ object fTypeEngagement: TfTypeEngagement
     Left = 0
     Top = 0
     Width = 754
-    Height = 306
+    Height = 333
     Align = alClient
     BiDiMode = bdRightToLeft
     DoubleBuffered = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
-    Font.Name = 'MS Sans Serif'
+    Font.Name = 'Segoe UI'
     Font.Style = []
     ParentBiDiMode = False
     ParentFont = False
@@ -57,12 +57,12 @@ object fTypeEngagement: TfTypeEngagement
         Left = 168
         Top = 30
         Width = 508
-        Height = 28
+        Height = 29
         Anchors = [akTop, akRight]
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
         TabOrder = 1
@@ -96,7 +96,7 @@ object fTypeEngagement: TfTypeEngagement
         Left = 0
         Top = 8
         Width = 41
-        Height = 24
+        Height = 25
         TabOrder = 4
         Visible = False
       end
@@ -116,19 +116,32 @@ object fTypeEngagement: TfTypeEngagement
       Left = 1
       Top = 73
       Width = 752
-      Height = 232
+      Height = 259
       Align = alClient
       DataSource = dm.dsTypeEngagement
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
       ReadOnly = True
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -13
-      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
       OnCellClick = dbGridCellClick
-      DefaultRowHeight = 20
+      DefaultRowHeight = 21
+      Columns = <
+        item
+          Expanded = False
+          FieldName = #1585#1602#1605
+          Width = 32
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = #1606#1608#1593' '#1575#1604#1575#1578#1586#1575#1605
+          Width = 698
+          Visible = True
+        end>
     end
   end
 end

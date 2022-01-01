@@ -1,10 +1,10 @@
 object fTypeEmployee: TfTypeEmployee
-  Left = -1127
-  Top = 208
+  Left = 169
+  Top = 108
   BorderStyle = bsDialog
   Caption = 'fTypeEmployee'
-  ClientHeight = 511
-  ClientWidth = 834
+  ClientHeight = 281
+  ClientWidth = 871
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,14 +13,15 @@ object fTypeEmployee: TfTypeEmployee
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object sPanel1: TsPanel
     Left = 0
     Top = 0
-    Width = 834
-    Height = 73
-    Align = alTop
+    Width = 871
+    Height = 281
+    Align = alClient
     BiDiMode = bdRightToLeft
     DoubleBuffered = False
     Font.Charset = DEFAULT_CHARSET
@@ -34,20 +35,20 @@ object fTypeEmployee: TfTypeEmployee
     object sGroupBox1: TsGroupBox
       Left = 1
       Top = 1
-      Width = 832
+      Width = 869
       Height = 71
-      Align = alClient
+      Align = alTop
       Caption = #1589#1606#1601' '#1605#1587#1578#1582#1583#1605
       TabOrder = 0
       DesignSize = (
-        832
+        869
         71)
-      object sEdit2: TsEdit
-        Left = 162
+      object edtEmployeeTypeFr: TsEdit
+        Left = 183
         Top = 25
         Width = 200
         Height = 28
-        Anchors = [akLeft, akTop, akRight, akBottom]
+        Anchors = [akTop, akRight]
         BiDiMode = bdLeftToRight
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -62,12 +63,12 @@ object fTypeEmployee: TfTypeEmployee
         BoundLabel.Caption = #1589#1606#1601' '#1575#1604#1605#1587#1578#1582#1583#1605' ('#1575#1604#1601#1585#1606#1587#1610#1577')'
         BoundLabel.Layout = sclRight
       end
-      object sEdit1: TsEdit
-        Left = 526
+      object edtEmployeeTypeAr: TsEdit
+        Left = 563
         Top = 26
         Width = 200
         Height = 28
-        Anchors = [akLeft, akTop, akRight, akBottom]
+        Anchors = [akTop, akRight]
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -16
@@ -79,57 +80,75 @@ object fTypeEmployee: TfTypeEmployee
         BoundLabel.Indent = 12
         BoundLabel.Caption = #1589#1606#1601' '#1575#1604#1605#1587#1578#1582#1583#1605
       end
-      object sBitBtn2: TsBitBtn
-        Left = 96
+      object btnSave: TsBitBtn
+        Left = 128
         Top = 25
         Width = 30
         Height = 30
         TabOrder = 2
+        OnClick = btnSaveClick
         ImageIndex = 4
         Images = MainForm.actionsIcons
       end
-      object sBitBtn1: TsBitBtn
-        Left = 57
+      object btnEdit: TsBitBtn
+        Left = 89
         Top = 25
         Width = 30
         Height = 30
         Enabled = False
         TabOrder = 3
+        OnClick = btnEditClick
         ImageIndex = 7
         Images = MainForm.actionsIcons
       end
-      object sBitBtn3: TsBitBtn
-        Left = 18
+      object btnDelete: TsBitBtn
+        Left = 50
         Top = 25
         Width = 30
         Height = 30
         Enabled = False
         TabOrder = 4
+        OnClick = btnDeleteClick
         ImageIndex = 3
         Images = MainForm.actionsIcons
       end
+      object btnCancel: TsBitBtn
+        Left = 10
+        Top = 25
+        Width = 32
+        Height = 30
+        Enabled = False
+        TabOrder = 5
+        OnClick = btnCancelClick
+        ImageIndex = 1
+        Images = MainForm.actionsIcons
+      end
+      object edtCode: TsEdit
+        Left = 0
+        Top = 8
+        Width = 41
+        Height = 24
+        TabOrder = 6
+        Visible = False
+      end
     end
-  end
-  object sPanel2: TsPanel
-    Left = 0
-    Top = 73
-    Width = 834
-    Height = 438
-    Align = alClient
-    DoubleBuffered = False
-    TabOrder = 1
-    object DBGrid1: TDBGrid
+    object dbGrid: TsDBGrid
       Left = 1
-      Top = 1
-      Width = 832
-      Height = 436
+      Top = 72
+      Width = 869
+      Height = 208
       Align = alClient
-      TabOrder = 0
+      DataSource = dm.dsTypeEmployee
+      Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgCancelOnExit]
+      ReadOnly = True
+      TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
-      TitleFont.Height = -11
+      TitleFont.Height = -13
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnCellClick = dbGridCellClick
+      DefaultRowHeight = 20
     end
   end
 end
