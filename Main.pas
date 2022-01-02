@@ -9,7 +9,7 @@ uses
   ImgList, acAlphaImageList, StdCtrls, Buttons, sBitBtn, acCoolBar, Mask,
   sMaskEdit, sCustomComboEdit, sComboBox, sGroupBox, ExtCtrls, DBCtrls,
   sPanel, DB, ADODB, sLabel, Grids, DBGrids, dbcgrids, sEdit, sButton,
-  sScrollBox, sDBNavigator, acDBGrid;
+  sScrollBox, sDBNavigator, acDBGrid, sCurrEdit, sCurrencyEdit, sToolEdit;
 
 type
   TMainForm = class(TForm)
@@ -132,6 +132,11 @@ type
     sDBGrid3: TsDBGrid;
     sBitBtn11: TsBitBtn;
     sEdit9: TsEdit;
+    sButton4: TsButton;
+    sButton5: TsButton;
+    sBitBtn13: TsBitBtn;
+    sBitBtn14: TsBitBtn;
+    sBitBtn15: TsBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pageControleChange(Sender: TObject);
     procedure btnAddBrancheClick(Sender: TObject);
@@ -187,7 +192,9 @@ type
     procedure sBitBtn10Click(Sender: TObject);
     procedure sDBGrid3CellClick(Column: TColumn);
     procedure sEdit9Change(Sender: TObject);
-    procedure sBitBtn11Click(Sender: TObject);
+    procedure sBitBtn11Clck(Sender: TObject);
+    procedure btnEditRbClick(Sender: TObject);
+    procedure sBitBtn15Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -311,12 +318,10 @@ begin
   gbxNewBranche.Visible := not gbxNewBranche.Visible;
   if gbxNewBranche.Visible then
     begin
-      btnAddBranche.ImageIndex := 9;
       panelBranches.Height :=  248;
     end
   else
     begin
-      btnAddBranche.ImageIndex := 10;
       panelBranches.Height :=  40;
     end;
 end;
@@ -359,8 +364,7 @@ begin
   edtDesigniationBrancheAr.Text := '';
   edtBrancheAr.Text := '';
 
-  // reload budget
-  loadBudget;
+  loadBranches;
 
 end;
 
@@ -385,7 +389,7 @@ begin
      edtDesigniationRubriqueAr.Text := '';
      edtDesigniationRubriqueFr.Text := '';
 
-     loadBudget;
+     // loadBudget;
     end
   else
     messagedlg('—Ã«¡« «Œ — «·›—⁄', mtWarning, [mbOK], 0);
@@ -438,7 +442,7 @@ begin
       edtSectionFr.Text := '';
       edtSectionAr.Text := '';
 
-      loadBudget;
+      // loadBudget;
     end
   else
     begin
@@ -465,7 +469,7 @@ begin
       edtChapitre.Text := '';
       edtMontantChapiter.Text := '';
 
-      loadBudget;
+      // loadBudget;
     end
   else
     messagedlg('—Ã«¡« «Œ — «·ﬁ”„', mtWarning, [mbOK], 0);
@@ -524,7 +528,7 @@ begin
         edtDecret.Text := '';
         edtMantantArticle.Text := '';
 
-        loadBudget;
+        // loadBudget;
 
         //end;
     end
@@ -650,7 +654,6 @@ begin
   if cbxBranches.Text <> '' then
     with dm.Query do
     begin
-      btnSaveBranche.Enabled := false;
       sql.clear;
       sql.Add('SELECT * FROM branches WHERE designation_b_ar = ' + QuotedStr(cbxBranches.Text));
       open;
@@ -935,7 +938,7 @@ begin
       edtDesigniationRubriqueAr.Text := '';
       edtDesigniationRubriqueFr.Text := '';
 
-      loadBudget;
+      // loadBudget;
     end;
 end;
 
@@ -995,7 +998,7 @@ begin
       edtSectionFr.Text := '';
       edtSectionAr.Text := '';
 
-      loadbudget;
+      // loadbudget;
     end;
 end;
 
@@ -1015,7 +1018,7 @@ begin
     edtDesignationChapitreAr.Text := '';
     edtMontantChapiter.Text := '';
 
-    loadBudget;
+    // loadBudget;
    end;
 end;
 
@@ -1068,16 +1071,46 @@ end;
 procedure TMainForm.sEdit9Change(Sender: TObject);
 begin
   if sEdit9.Text <> '' then
-    sBitBtn11.Enabled := true
+    begin
+    sBitBtn11.Enabled := true;
+    sBitBtn15.Enabled := true;
+    sBitBtn14.Enabled := true;
+    end
   else
+    begin
     sBitBtn11.Enabled := false;
+    sBitBtn15.Enabled := false;
+    sBitBtn14.Enabled := false;
+    end;
 end;
 
-procedure TMainForm.sBitBtn11Click(Sender: TObject);
+procedure TMainForm.sBitBtn11Clck(Sender: TObject);
 begin
   form3.ADOQuery1.Active := true;
   form3.entreprise.Active := true;
   form3.QuickRep1.Preview;
+end;
+
+procedure TMainForm.btnEditRbClick(Sender: TObject);
+begin
+  // if sEdit5.Text <> then
+
+end;
+
+procedure TMainForm.sBitBtn15Click(Sender: TObject);
+begin
+  if sEdit9.Text <> '' then
+   with dm.Query do
+   begin
+    sql.Clear;
+    sql.add('DELETE FROM mandat_paiement WHERE code_mp = '+QuotedStr(sEdit9.Text));
+    execSql;
+
+     sEdit9.Text := ''; 
+
+    sDBGrid3.DataSource.DataSet.Active := false;
+    sDBGrid3.DataSource.DataSet.Active := true;
+   end;
 end;
 
 end.

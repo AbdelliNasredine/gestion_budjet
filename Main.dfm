@@ -1,8 +1,8 @@
 object MainForm: TMainForm
-  Left = 67
-  Top = 21
-  Width = 1224
-  Height = 702
+  Left = -1448
+  Top = -8
+  Width = 1456
+  Height = 886
   AlphaBlend = True
   BiDiMode = bdLeftToRight
   Caption = 'Principale - Gestion Budjet'
@@ -23,16 +23,16 @@ object MainForm: TMainForm
   TextHeight = 13
   object sStatusBar1: TsStatusBar
     Left = 0
-    Top = 624
-    Width = 1208
+    Top = 808
+    Width = 1440
     Height = 19
     Panels = <>
   end
   object pageControle: TsPageControl
     Left = 0
     Top = 0
-    Width = 1208
-    Height = 624
+    Width = 1440
+    Height = 808
     ActivePage = engagements
     Align = alClient
     BiDiMode = bdRightToLeft
@@ -62,8 +62,8 @@ object MainForm: TMainForm
       object sPanel2: TsPanel
         Left = 0
         Top = 0
-        Width = 1200
-        Height = 569
+        Width = 1432
+        Height = 753
         Align = alClient
         DoubleBuffered = False
         Font.Charset = DEFAULT_CHARSET
@@ -76,17 +76,17 @@ object MainForm: TMainForm
         object panelBranches: TsPanel
           Left = 1
           Top = 81
-          Width = 1198
+          Width = 1430
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 0
           DesignSize = (
-            1198
+            1430
             40)
           object btnAddBranche: TsBitBtn
-            Left = 221
+            Left = 453
             Top = 8
             Width = 32
             Height = 28
@@ -103,7 +103,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object cbxBranches: TsComboBox
-            Left = 264
+            Left = 496
             Top = 8
             Width = 800
             Height = 28
@@ -130,7 +130,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object gbxNewBranche: TsGroupBox
-            Left = 221
+            Left = 453
             Top = 44
             Width = 846
             Height = 197
@@ -353,23 +353,24 @@ object MainForm: TMainForm
         object panelRubriques: TsPanel
           Left = 1
           Top = 121
-          Width = 1198
+          Width = 1430
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 1
           DesignSize = (
-            1198
+            1430
             40)
           object cbxRubrique: TsComboBox
-            Left = 264
+            Left = 496
             Top = 5
             Width = 800
             Height = 28
             Anchors = [akTop, akRight]
             BiDiMode = bdRightToLeft
             DoubleBuffered = False
+            Enabled = False
             ParentBiDiMode = False
             TabOrder = 0
             OnChange = cbxRubriqueChange
@@ -390,7 +391,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddRubrique: TsBitBtn
-            Left = 221
+            Left = 453
             Top = 5
             Width = 32
             Height = 28
@@ -407,7 +408,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object gbxNewRubrique: TsGroupBox
-            Left = 224
+            Left = 456
             Top = 40
             Width = 845
             Height = 193
@@ -575,6 +576,7 @@ object MainForm: TMainForm
                 ParentBiDiMode = False
                 ParentFont = False
                 TabOrder = 1
+                OnClick = btnEditRbClick
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
@@ -628,23 +630,24 @@ object MainForm: TMainForm
         object panelSections: TsPanel
           Left = 1
           Top = 161
-          Width = 1198
+          Width = 1430
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 2
           DesignSize = (
-            1198
+            1430
             40)
           object cbxSections: TsComboBox
-            Left = 264
+            Left = 496
             Top = 5
             Width = 800
             Height = 28
             Anchors = [akTop, akRight]
             BiDiMode = bdRightToLeft
             DoubleBuffered = False
+            Enabled = False
             ParentBiDiMode = False
             TabOrder = 0
             OnChange = cbxSectionsChange
@@ -665,7 +668,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddSection: TsBitBtn
-            Left = 221
+            Left = 453
             Top = 5
             Width = 32
             Height = 28
@@ -682,7 +685,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object gbxNewSection: TsGroupBox
-            Left = 224
+            Left = 456
             Top = 40
             Width = 845
             Height = 193
@@ -903,23 +906,24 @@ object MainForm: TMainForm
         object panelChapiters: TsPanel
           Left = 1
           Top = 201
-          Width = 1198
+          Width = 1430
           Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 3
           DesignSize = (
-            1198
+            1430
             40)
           object cbxChapitres: TsComboBox
-            Left = 264
+            Left = 496
             Top = 5
             Width = 800
             Height = 28
             Anchors = [akTop, akRight]
             BiDiMode = bdRightToLeft
             DoubleBuffered = False
+            Enabled = False
             ParentBiDiMode = False
             TabOrder = 0
             OnChange = cbxChapitresChange
@@ -940,7 +944,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddChapitre: TsBitBtn
-            Left = 221
+            Left = 453
             Top = 5
             Width = 32
             Height = 28
@@ -957,7 +961,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object gbxNexChapitre: TsGroupBox
-            Left = 224
+            Left = 456
             Top = 40
             Width = 841
             Height = 140
@@ -1057,7 +1061,7 @@ object MainForm: TMainForm
                 ImageIndex = 5
               end
               object sButton1: TsButton
-                Left = 596
+                Left = 476
                 Top = 5
                 Width = 112
                 Height = 28
@@ -1073,6 +1077,25 @@ object MainForm: TMainForm
                 ParentFont = False
                 TabOrder = 1
                 OnClick = sButton1Click
+                ImageAlignment = iaRight
+                ImageIndex = 5
+              end
+              object sButton4: TsButton
+                Left = 596
+                Top = 5
+                Width = 112
+                Height = 28
+                Anchors = [akTop, akRight, akBottom]
+                BiDiMode = bdRightToLeft
+                Caption = #1578#1593#1583#1610#1604
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentBiDiMode = False
+                ParentFont = False
+                TabOrder = 2
                 ImageAlignment = iaRight
                 ImageIndex = 5
               end
@@ -1134,23 +1157,24 @@ object MainForm: TMainForm
         object panelArticles: TsPanel
           Left = 1
           Top = 241
-          Width = 1198
-          Height = 256
+          Width = 1430
+          Height = 40
           Align = alTop
           BevelOuter = bvNone
           DoubleBuffered = False
           TabOrder = 4
           DesignSize = (
-            1198
-            256)
+            1430
+            40)
           object cbxArticles: TsComboBox
-            Left = 264
+            Left = 496
             Top = 5
             Width = 800
             Height = 28
             Anchors = [akTop, akRight]
             BiDiMode = bdRightToLeft
             DoubleBuffered = False
+            Enabled = False
             ParentBiDiMode = False
             TabOrder = 0
             OnChange = cbxArticlesChange
@@ -1171,7 +1195,7 @@ object MainForm: TMainForm
             BoundLabel.ParentFont = False
           end
           object btnAddArticle: TsBitBtn
-            Left = 221
+            Left = 453
             Top = 5
             Width = 32
             Height = 28
@@ -1188,7 +1212,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object gbxNewArticle: TsGroupBox
-            Left = 224
+            Left = 456
             Top = 40
             Width = 843
             Height = 193
@@ -1264,7 +1288,7 @@ object MainForm: TMainForm
                 ImageIndex = 5
               end
               object sButton3: TsButton
-                Left = 598
+                Left = 478
                 Top = 5
                 Width = 112
                 Height = 28
@@ -1299,6 +1323,26 @@ object MainForm: TMainForm
                 TabOrder = 2
                 OnClick = sBitBtn10Click
                 ImageIndex = 0
+              end
+              object sButton5: TsButton
+                Left = 598
+                Top = 5
+                Width = 112
+                Height = 28
+                Anchors = [akTop, akRight, akBottom]
+                BiDiMode = bdRightToLeft
+                Caption = #1578#1593#1583#1610#1604
+                Enabled = False
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentBiDiMode = False
+                ParentFont = False
+                TabOrder = 3
+                ImageAlignment = iaRight
+                ImageIndex = 5
               end
             end
             object edtMantantArticle: TsMaskEdit
@@ -1436,7 +1480,7 @@ object MainForm: TMainForm
         object sPanel10: TsPanel
           Left = 1
           Top = 1
-          Width = 1198
+          Width = 1430
           Height = 80
           Align = alTop
           BevelOuter = bvLowered
@@ -1465,8 +1509,8 @@ object MainForm: TMainForm
       object sPanel7: TsPanel
         Left = 0
         Top = 0
-        Width = 1200
-        Height = 569
+        Width = 1432
+        Height = 753
         Align = alClient
         BevelOuter = bvNone
         DoubleBuffered = False
@@ -1480,7 +1524,7 @@ object MainForm: TMainForm
         object sGroupBox1: TsGroupBox
           Left = 0
           Top = 0
-          Width = 1200
+          Width = 1432
           Height = 81
           Align = alTop
           Caption = #1575#1604#1593#1605#1604#1610#1575#1578
@@ -1494,7 +1538,7 @@ object MainForm: TMainForm
           object sPanel8: TsPanel
             Left = 2
             Top = 23
-            Width = 1196
+            Width = 1428
             Height = 56
             Align = alClient
             BevelOuter = bvNone
@@ -1507,7 +1551,7 @@ object MainForm: TMainForm
             ParentFont = False
             TabOrder = 0
             DesignSize = (
-              1196
+              1428
               56)
             object sBitBtn1: TsBitBtn
               Left = 521
@@ -1566,7 +1610,7 @@ object MainForm: TMainForm
               Align = alCustom
             end
             object sComboBox1: TsComboBox
-              Left = 728
+              Left = 960
               Top = 8
               Width = 377
               Height = 29
@@ -1598,10 +1642,10 @@ object MainForm: TMainForm
         object sDBGrid1: TsDBGrid
           Left = 0
           Top = 81
-          Width = 1200
-          Height = 488
+          Width = 1432
+          Height = 672
           Align = alClient
-          BiDiMode = bdRightToLeft
+          BiDiMode = bdLeftToRight
           Color = clWhite
           DataSource = dm.dsEngagament
           Font.Charset = DEFAULT_CHARSET
@@ -1667,7 +1711,7 @@ object MainForm: TMainForm
       object sGroupBox2: TsGroupBox
         Left = 0
         Top = 0
-        Width = 1200
+        Width = 1432
         Height = 217
         Align = alTop
         Caption = #1605#1593#1604#1608#1605#1575#1578' '#1575#1604#1578#1581#1608#1610#1604
@@ -1679,10 +1723,10 @@ object MainForm: TMainForm
         ParentFont = False
         TabOrder = 0
         DesignSize = (
-          1200
+          1432
           217)
         object sComboBox2: TsComboBox
-          Left = 733
+          Left = 965
           Top = 48
           Width = 350
           Height = 29
@@ -1694,7 +1738,7 @@ object MainForm: TMainForm
           BoundLabel.Caption = #1605#1606
         end
         object sComboBox3: TsComboBox
-          Left = 312
+          Left = 544
           Top = 48
           Width = 350
           Height = 29
@@ -1706,7 +1750,7 @@ object MainForm: TMainForm
           BoundLabel.Caption = #1573#1604#1609
         end
         object sEdit3: TsEdit
-          Left = 832
+          Left = 1064
           Top = 96
           Width = 250
           Height = 29
@@ -1720,17 +1764,17 @@ object MainForm: TMainForm
         object sPanel9: TsPanel
           Left = 2
           Top = 157
-          Width = 1196
+          Width = 1428
           Height = 58
           Align = alBottom
           BevelOuter = bvLowered
           DoubleBuffered = False
           TabOrder = 3
           DesignSize = (
-            1196
+            1428
             58)
           object sBitBtn5: TsBitBtn
-            Left = 1056
+            Left = 1288
             Top = 12
             Width = 120
             Height = 35
@@ -1748,7 +1792,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object sBitBtn6: TsBitBtn
-            Left = 920
+            Left = 1152
             Top = 12
             Width = 120
             Height = 35
@@ -1767,7 +1811,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object sBitBtn7: TsBitBtn
-            Left = 784
+            Left = 1016
             Top = 12
             Width = 120
             Height = 35
@@ -1786,7 +1830,7 @@ object MainForm: TMainForm
             Images = actionsIcons
           end
           object sBitBtn8: TsBitBtn
-            Left = 656
+            Left = 888
             Top = 12
             Width = 120
             Height = 35
@@ -1805,7 +1849,7 @@ object MainForm: TMainForm
           end
         end
         object sEdit4: TsEdit
-          Left = -45
+          Left = 3
           Top = 16
           Width = 47
           Height = 29
@@ -1820,8 +1864,8 @@ object MainForm: TMainForm
       object sDBGrid2: TsDBGrid
         Left = 0
         Top = 217
-        Width = 1200
-        Height = 352
+        Width = 1432
+        Height = 536
         Align = alClient
         Color = clWhite
         DataSource = dm.dsTransfert
@@ -1890,25 +1934,29 @@ object MainForm: TMainForm
       object sGroupBox3: TsGroupBox
         Left = 0
         Top = 0
-        Width = 1332
-        Height = 97
+        Width = 1432
+        Height = 81
         Align = alTop
         Caption = #1575#1604#1593#1605#1604#1610#1575#1578
         TabOrder = 0
+        DesignSize = (
+          1432
+          81)
         object sBitBtn11: TsBitBtn
-          Left = 1200
-          Top = 40
+          Left = 920
+          Top = 32
           Width = 120
           Height = 35
+          Anchors = [akTop, akRight]
           Caption = #1591#1576#1593
           Enabled = False
           TabOrder = 0
-          OnClick = sBitBtn11Click
+          OnClick = sBitBtn11Clck
           ImageIndex = 8
           Images = actionsIcons
         end
         object sEdit9: TsEdit
-          Left = 0
+          Left = 8
           Top = 16
           Width = 121
           Height = 29
@@ -1916,12 +1964,48 @@ object MainForm: TMainForm
           Visible = False
           OnChange = sEdit9Change
         end
+        object sBitBtn13: TsBitBtn
+          Left = 1304
+          Top = 32
+          Width = 120
+          Height = 35
+          Anchors = [akTop, akRight]
+          Caption = #1573#1590#1575#1601#1577
+          TabOrder = 2
+          ImageIndex = 8
+          Images = actionsIcons
+        end
+        object sBitBtn14: TsBitBtn
+          Left = 1176
+          Top = 32
+          Width = 120
+          Height = 35
+          Anchors = [akTop, akRight]
+          Caption = #1578#1593#1583#1610#1604
+          Enabled = False
+          TabOrder = 3
+          ImageIndex = 7
+          Images = actionsIcons
+        end
+        object sBitBtn15: TsBitBtn
+          Left = 1048
+          Top = 32
+          Width = 120
+          Height = 35
+          Anchors = [akTop, akRight]
+          Caption = #1581#1583#1601
+          Enabled = False
+          TabOrder = 4
+          OnClick = sBitBtn15Click
+          ImageIndex = 3
+          Images = actionsIcons
+        end
       end
       object sDBGrid3: TsDBGrid
         Left = 0
-        Top = 97
-        Width = 1332
-        Height = 542
+        Top = 81
+        Width = 1432
+        Height = 672
         Align = alClient
         Color = clWhite
         DataSource = dm.dsMondat

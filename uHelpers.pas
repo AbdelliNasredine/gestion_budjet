@@ -425,7 +425,11 @@ var q: TADOQuery;
 begin
   q := TADOQuery.Create(nil);
   q.Connection := dm.ADOConnection1;
-  q.SQL.Text := 'DELETE FROM branches WHERE code_b = ' + QuotedStr(code);
+  q.SQL.add('DELETE FROM branches WHERE code_b=' + QuotedStr(code)+';');
+  q.SQL.add('DELETE FROM rubriques WHERE code_r LIKE '+QuotedStr(code+'%')+';');
+  q.SQL.add('DELETE FROM sections WHERE code_s LIKE '+QuotedStr(code+'%')+';');
+  q.SQL.add('DELETE FROM chapitres WHERE code_ch LIKE '+QuotedStr(code+'%')+';');
+  q.SQL.add('DELETE FROM articles WHERE code_a LIKE'+QuotedStr(code+'%')+';');
   q.ExecSQL;
   q.Close;
   q.Free;
