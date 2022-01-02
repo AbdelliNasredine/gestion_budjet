@@ -1,9 +1,9 @@
 object dm: Tdm
   OldCreateOrder = False
-  Left = 179
-  Top = 50
-  Height = 526
-  Width = 918
+  Left = 193
+  Top = 165
+  Height = 536
+  Width = 919
   object ADOConnection1: TADOConnection
     Connected = True
     ConnectionString = 
@@ -24,8 +24,8 @@ object dm: Tdm
   end
   object dsBranche: TDataSource
     DataSet = tblBranche
-    Left = 56
-    Top = 120
+    Left = 64
+    Top = 72
   end
   object qryBranche: TADOQuery
     Connection = ADOConnection1
@@ -55,8 +55,8 @@ object dm: Tdm
   object dsTypeEngagement: TDataSource
     AutoEdit = False
     DataSet = qryTypeEngagement
-    Left = 56
-    Top = 168
+    Left = 64
+    Top = 120
   end
   object qryTypeEmployee: TADOQuery
     Active = True
@@ -75,8 +75,8 @@ object dm: Tdm
   object dsTypeEmployee: TDataSource
     AutoEdit = False
     DataSet = qryTypeEmployee
-    Left = 56
-    Top = 216
+    Left = 64
+    Top = 168
   end
   object qryBanque: TADOQuery
     Active = True
@@ -95,8 +95,8 @@ object dm: Tdm
   object dsBanque: TDataSource
     AutoEdit = False
     DataSet = qryBanque
-    Left = 56
-    Top = 264
+    Left = 64
+    Top = 216
   end
   object Query: TADOQuery
     Connection = ADOConnection1
@@ -107,8 +107,8 @@ object dm: Tdm
   end
   object dsEngagament: TDataSource
     DataSet = qryEngagement
-    Left = 52
-    Top = 328
+    Left = 68
+    Top = 272
   end
   object qryEngagement: TADOQuery
     Active = True
@@ -141,8 +141,8 @@ object dm: Tdm
   end
   object dsTransfert: TDataSource
     DataSet = qryTransfert
-    Left = 52
-    Top = 400
+    Left = 68
+    Top = 336
   end
   object qryTransfert: TADOQuery
     Active = True
@@ -162,7 +162,7 @@ object dm: Tdm
         'rans_out) as des_out '
       'FROM transferts t;')
     Left = 160
-    Top = 400
+    Top = 392
   end
   object qryMondat: TADOQuery
     Active = True
@@ -174,12 +174,12 @@ object dm: Tdm
     Parameters = <>
     SQL.Strings = (
       'SELECT * FROM mandat_paiement;')
-    Left = 392
-    Top = 288
+    Left = 160
+    Top = 8
   end
   object dsMondat: TDataSource
     DataSet = qryMondat
-    Left = 340
-    Top = 288
+    Left = 68
+    Top = 8
   end
 end

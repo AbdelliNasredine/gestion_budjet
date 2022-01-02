@@ -33,7 +33,7 @@ object MainForm: TMainForm
     Top = 0
     Width = 1440
     Height = 808
-    ActivePage = engagements
+    ActivePage = sTabSheet2
     Align = alClient
     BiDiMode = bdRightToLeft
     Font.Charset = DEFAULT_CHARSET

@@ -18,7 +18,8 @@ uses
   Unit2 in '..\..\..\Desktop\files\budjet\Unit2.pas' {Form2},
   Unit1 in '..\..\..\Desktop\files\budjet\Unit1.pas' {Form1},
   uDesengagement in 'uDesengagement.pas' {fDesengagement},
-  uBs in 'uBs.pas' {fBS};
+  uBs in 'uBs.pas' {fBS},
+  uMondat in 'uMondat.pas' {fMondat};
 
 {$R *.res}
 
@@ -40,5 +41,6 @@ begin
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TfDesengagement, fDesengagement);
   Application.CreateForm(TfBS, fBS);
+  Application.CreateForm(TfMondat, fMondat);
   Application.Run;
 end.
