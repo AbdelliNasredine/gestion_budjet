@@ -1,6 +1,6 @@
 object AuthForm: TAuthForm
-  Left = 338
-  Top = 266
+  Left = 352
+  Top = 267
   Width = 369
   Height = 192
   AlphaBlend = True

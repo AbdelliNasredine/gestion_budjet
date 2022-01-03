@@ -111,31 +111,12 @@ object dm: Tdm
     Top = 272
   end
   object qryEngagement: TADOQuery
-    Active = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Adm1n1strateur;Persist Security Inf' +
       'o=True;User ID=sa;Initial Catalog=gestion_budget;Data Source=ser' +
       'ver2'
     CursorType = ctStatic
     Parameters = <>
-    SQL.Strings = (
-      
-        'select *,a.montant_a-(select sum(montant_e1+montant_e2+montant_e' +
-        '3+montant_e4) from fiche_engagement where code_a=e.code_a)+(mont' +
-        'ant_e1+montant_e2+montant_e3+montant_e4) as compte_anc, dbo.nomb' +
-        're_en_chiffre_ar(floor(montant_e1+montant_e2+montant_e3+montant_' +
-        'e4)) as nombre_en_chiffre, round((montant_e1+montant_e2+montant_' +
-        'e3+montant_e4)-floor(montant_e1+montant_e2+montant_e3+montant_e4' +
-        '),2,1)*100 as dec, (select designation_temp_ar from typemploye w' +
-        'here e.code_temp=code_temp) as temp, (montant_e1+montant_e2+mont' +
-        'ant_e3+montant_e4) as total, designation_te+'#39' '#39'+e1 as e10, (sele' +
-        'ct designation_msg_ar from msgs where code_msg=e.sit) as sit_e f' +
-        'rom fiche_engagement e, banques b, articles a, chapitres ch, typ' +
-        'e_engagement teng'
-      'where e.code_bq=b.code_bq'
-      'and e.code_a=a.code_a'
-      'and ch.code_ch=substring(a.code_a,1,8)'
-      'and teng.code_te=e.code_te')
     Left = 160
     Top = 328
   end
@@ -145,7 +126,6 @@ object dm: Tdm
     Top = 336
   end
   object qryTransfert: TADOQuery
-    Active = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Password=Adm1n1strateur;Persist Security Inf' +
       'o=True;User ID=sa;Initial Catalog=gestion_budget;Data Source=ser' +

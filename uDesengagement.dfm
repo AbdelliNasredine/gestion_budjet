@@ -1,8 +1,8 @@
 object fDesengagement: TfDesengagement
-  Left = 454
-  Top = 78
+  Left = -995
+  Top = 210
   Width = 522
-  Height = 486
+  Height = 392
   Caption = 'fDesengagement'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,7 +18,7 @@ object fDesengagement: TfDesengagement
     Left = 0
     Top = 0
     Width = 506
-    Height = 447
+    Height = 353
     Align = alClient
     BiDiMode = bdRightToLeft
     DoubleBuffered = False
@@ -34,21 +34,28 @@ object fDesengagement: TfDesengagement
       Left = 1
       Top = 1
       Width = 504
-      Height = 394
+      Height = 300
       Align = alClient
       Caption = #1587#1581#1576' '#1575#1604#1573#1604#1578#1586#1575#1605
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       DesignSize = (
         504
-        394)
+        300)
       object sEdit1: TsEdit
-        Left = 368
-        Top = 56
+        Left = 16
+        Top = 16
         Width = 121
-        Height = 28
+        Height = 29
         Anchors = [akTop, akRight]
         Enabled = False
         TabOrder = 0
+        Visible = False
         BoundLabel.Active = True
         BoundLabel.Indent = 5
         BoundLabel.Caption = #1585#1602#1605' '#1575#1604#1573#1604#1578#1586#1575#1605
@@ -56,16 +63,10 @@ object fDesengagement: TfDesengagement
       end
       object sMemo1: TsMemo
         Left = 16
-        Top = 120
+        Top = 48
         Width = 473
         Height = 241
         Anchors = [akTop, akRight]
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -15
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
         TabOrder = 1
         BoundLabel.Active = True
         BoundLabel.Indent = 5
@@ -75,7 +76,7 @@ object fDesengagement: TfDesengagement
     end
     object sPanel2: TsPanel
       Left = 1
-      Top = 395
+      Top = 301
       Width = 504
       Height = 51
       Align = alBottom
@@ -93,6 +94,12 @@ object fDesengagement: TfDesengagement
         Height = 35
         Anchors = [akTop, akRight]
         Caption = #1578#1571#1603#1610#1583
+        Font.Charset = ARABIC_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
         OnClick = sBitBtn1Click
       end
@@ -103,6 +110,12 @@ object fDesengagement: TfDesengagement
         Height = 35
         Anchors = [akTop, akRight]
         Caption = #1573#1604#1594#1575#1569
+        Font.Charset = ARABIC_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 1
         OnClick = sBitBtn2Click
       end

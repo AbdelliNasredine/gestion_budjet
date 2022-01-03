@@ -9,7 +9,8 @@ uses
   ImgList, acAlphaImageList, StdCtrls, Buttons, sBitBtn, acCoolBar, Mask,
   sMaskEdit, sCustomComboEdit, sComboBox, sGroupBox, ExtCtrls, DBCtrls,
   sPanel, DB, ADODB, sLabel, Grids, DBGrids, dbcgrids, sEdit, sButton,
-  sScrollBox, sDBNavigator, acDBGrid, sCurrEdit, sCurrencyEdit, sToolEdit;
+  sScrollBox, sDBNavigator, acDBGrid, sCurrEdit, sCurrencyEdit, sToolEdit,
+  acSlider;
 
 type
   TMainForm = class(TForm)
@@ -17,11 +18,9 @@ type
     sideMenuIcons: TsCharImageList;
     MainMenu1: TMainMenu;
     F1: TMenuItem;
-    N1: TMenuItem;
     N2: TMenuItem;
     Q2: TMenuItem;
     mainMenuIcons: TsCharImageList;
-    A1: TMenuItem;
     actionsIcons: TsCharImageList;
     sSkinProvider1: TsSkinProvider;
     pageControle: TsPageControl;
@@ -68,13 +67,11 @@ type
     edtDesignationChapitreAr: TsEdit;
     sPanel5: TsPanel;
     btnSaveChapiter: TsButton;
-    edtMontantChapiter: TsMaskEdit;
     panelArticles: TsPanel;
     gbxNewArticle: TsGroupBox;
     edtDesignationArticleAr: TsEdit;
     sPanel6: TsPanel;
     sButton2: TsButton;
-    edtMantantArticle: TsMaskEdit;
     edtDecret: TsEdit;
     edtMantantArticleRest: TsMaskEdit;
     N3: TMenuItem;
@@ -91,7 +88,6 @@ type
     sBitBtn4: TsBitBtn;
     sDBGrid1: TsDBGrid;
     sEdit1: TsEdit;
-    R1: TMenuItem;
     I1: TMenuItem;
     sEdit2: TsEdit;
     sComboBox1: TsComboBox;
@@ -137,6 +133,9 @@ type
     sBitBtn13: TsBitBtn;
     sBitBtn14: TsBitBtn;
     sBitBtn15: TsBitBtn;
+    sBitBtn12: TsBitBtn;
+    sCurrencyEdit1: TsCurrencyEdit;
+    sCurrencyEdit2: TsCurrencyEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure pageControleChange(Sender: TObject);
     procedure btnAddBrancheClick(Sender: TObject);
@@ -195,6 +194,11 @@ type
     procedure sBitBtn11Clck(Sender: TObject);
     procedure btnEditRbClick(Sender: TObject);
     procedure sBitBtn15Click(Sender: TObject);
+    procedure sBitBtn3Click(Sender: TObject);
+    procedure btnEditSeClick(Sender: TObject);
+    procedure sButton4Click(Sender: TObject);
+    procedure sButton3Click(Sender: TObject);
+    procedure sButton5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -208,7 +212,7 @@ implementation
 
 uses Auth, uValidation, uAddBranch, uDataModule, uHelpers, uBanques,
   uTypeEmployee, uTypeEngagement, uFicheEngagaement, Unit2, uEntreprise,
-  Unit5, uDesengagement, uBs, Unit3;
+  Unit5, uDesengagement, uBs;
 
 {$R *.dfm}
 
@@ -308,7 +312,6 @@ end;
 
 procedure TMainForm.pageControleChange(Sender: TObject);
 begin
-  if pageControle.ActivePageIndex = 0 then loadBudget;
   if pageControle.ActivePageIndex = 0 then loadBudget;
 end;
 
@@ -462,13 +465,14 @@ begin
         '',
         edtDesignationChapitreAr.Text,
         edtChapitre.Text,
-        edtMontantChapiter.Text
+        // edtMontantChapiter.Text
+        sCurrencyEdit1.Text
       );
 
       edtDesignationChapitreAr.Text := '';
       edtChapitre.Text := '';
-      edtMontantChapiter.Text := '';
-
+      //edtMontantChapiter.Text := '';
+      sCurrencyEdit1.clear;
       // loadBudget;
     end
   else
@@ -517,7 +521,8 @@ begin
             edtDesignationArticleAr.Text,
             edtArticle.Text,
             edtDecret.Text,
-            edtMantantArticle.Text
+            //edtMantantArticle.Text
+            sCurrencyEdit2.Text
           );
         except on E : Exception do
           ShowMessage('Error : ' + E.message);
@@ -526,7 +531,8 @@ begin
         edtDesignationArticleAr.Text := '';
         edtArticle.Text := '';
         edtDecret.Text := '';
-        edtMantantArticle.Text := '';
+        // edtMantantArticle.Text := '';
+        sCurrencyEdit2.clear;
 
         // loadBudget;
 
@@ -551,7 +557,8 @@ begin
         sEdit7.Text := Fields[0].AsString;
         edtChapitre.Text := Fields[1].AsString;
         edtDesignationChapitreAr.Text := Fields[3].AsString;
-        edtMontantChapiter.Text := Fields[4].AsString;
+        // edtMontantChapiter.Text := Fields[4].AsString;
+        sCurrencyEdit1.Text := Fields[4].AsString;
         populateCbxSql(
           'SELECT designation_a_ar FROM articles WHERE '
           + 'code_a LIKE '+QuotedStr(sEdit7.Text+'%'),
@@ -567,7 +574,8 @@ begin
       sEdit7.Text := '';
       edtChapitre.Text := '';
       edtDesignationChapitreAr.Text := '';
-      edtMontantChapiter.Text := '';
+      // edtMontantChapiter.Text := '';
+      sCurrencyEdit1.clear;
     end;
 end;
 
@@ -595,6 +603,7 @@ begin
       sBitBtn3.Enabled := true;
       sBitBtn4.Enabled := true;
       sBitBtn9.Enabled := true;
+      sBitBtn12.Enabled := true;
     end
   else
     begin
@@ -602,6 +611,7 @@ begin
       sBitBtn3.Enabled := false;
       sBitBtn4.Enabled := false;
       sBitBtn9.Enabled := false;
+      sBitBtn12.Enabled := false;
     end;
 end;
 
@@ -609,7 +619,8 @@ procedure TMainForm.sDBGrid1CellClick(Column: TColumn);
 begin
   with dm.qryEngagement  do
   begin
-    sEdit1.Text := Fields[0].AsString;
+    if RecordCount <> 0 then
+      sEdit1.Text := FieldValues['code_eng'];
   end;
 end;
 
@@ -641,6 +652,7 @@ begin
   begin
     DeleteFicheEngagement(sEdit1.Text);
     refresheEngagement;
+    sEdit1.Text := '';
   end;
 end;
 
@@ -1016,8 +1028,8 @@ begin
     sEdit7.Text := '';
     edtChapitre.Text := '';
     edtDesignationChapitreAr.Text := '';
-    edtMontantChapiter.Text := '';
-
+    // edtMontantChapiter.Text := '';
+    sCurrencyEdit1.Clear;
     // loadBudget;
    end;
 end;
@@ -1026,7 +1038,7 @@ procedure TMainForm.cbxArticlesChange(Sender: TObject);
 begin
   if cbxArticles.Text <> '' then
     begin
-      // sButton4.Enabled := true;
+      sButton5.Enabled := true;
       sButton3.Enabled := true;
       sButton2.Enabled := false;
       with dm.Query do
@@ -1038,19 +1050,21 @@ begin
         edtArticle.Text := Fields[5].AsString;
         edtDesignationArticleAr.Text := Fields[2].AsString;
         edtDecret.Text := Fields[3].AsString;
-        edtMantantArticle.Text := Fields[4].AsString;
+        // edtMantantArticle.Text := Fields[4].AsString;
+        sCurrencyEdit2.Text := Fields[4].AsString;
       end;
     end
   else
     begin
       sButton2.Enabled := true;
-      // sButton4.Enabled := false;
+      sButton5.Enabled := false;
       sButton3.Enabled := false;
       sEdit8.Text := '';
       edtArticle.Text := '';
       edtDesignationArticleAr.Text := '';
       edtDecret.Text := '';
-      edtMantantArticle.Text := '';
+      // edtMantantArticle.Text := '';
+      sCurrencyEdit2.Clear;
     end;
 end;
 
@@ -1086,15 +1100,25 @@ end;
 
 procedure TMainForm.sBitBtn11Clck(Sender: TObject);
 begin
-  form3.ADOQuery1.Active := true;
-  form3.entreprise.Active := true;
-  form3.QuickRep1.Preview;
+  // form3.ADOQuery1.Active := true;
+  // form3.entreprise.Active := true;
+  // form3.QuickRep1.Preview;
 end;
 
 procedure TMainForm.btnEditRbClick(Sender: TObject);
 begin
-  // if sEdit5.Text <> then
-
+  if sEdit5.Text <> '' then
+    with dm.Query do
+    begin
+      sql.Clear;
+      sql.add('UPDATE rubriques SET ');
+      sql.add('designation_r_ar = ' + quotedstr(edtDesigniationRubriqueAr.Text) + ',');
+      sql.add('designation_r_fr = ' + quotedstr(edtDesigniationRubriqueFr.Text) + ',');
+      sql.add('rubrique_ar = ' + quotedstr(edtRubriqueAr.Text) + ',');
+      sql.add('rubrique_fr = ' + quotedstr(edtRubriqueFr.Text));
+      sql.Add('WHERE code_r = ' + quotedstr(sEdit5.Text));
+      execSql;
+    end;
 end;
 
 procedure TMainForm.sBitBtn15Click(Sender: TObject);
@@ -1111,6 +1135,76 @@ begin
     sDBGrid3.DataSource.DataSet.Active := false;
     sDBGrid3.DataSource.DataSet.Active := true;
    end;
+end;
+
+procedure TMainForm.sBitBtn3Click(Sender: TObject);
+begin
+  // editing
+ {if sEdit1.Text <> '' then
+ begin
+  fFichierEngagament.code.Text := sEdit1.Text;
+  fFichierEngagament.ShowModal;
+ end;
+ }
+end;
+
+procedure TMainForm.btnEditSeClick(Sender: TObject);
+begin
+  if sEdit6.Text <> '' then
+  with dm.Query do
+  begin
+    sql.clear;
+    sql.add('UPDATE sections SET');
+    sql.add('designation_s_ar = ' + quotedstr(edtDesigniationSectionAr.Text) + ',');
+    sql.add('designation_s_fr = ' + quotedstr(edtDesigniationSectionFr.Text) + ',');
+    sql.add('section_ar = ' + quotedstr(edtSectionAr.Text) + ',');
+    sql.add('section_fr = ' + quotedstr(edtSectionFr.Text));
+    sql.Add(' WHERE code_s = '+quotedstr(sEdit6.Text));
+    execSql;
+  end;
+end;
+
+procedure TMainForm.sButton4Click(Sender: TObject);
+begin
+  if sEdit7.Text <> '' then
+  with dm.Query do
+  begin
+    sql.Clear;
+    sql.add('UPDATE chapitres SET');
+    sql.add('chapitre = '+quotedstr(edtChapitre.Text)+',');
+    sql.add('designation_ch_ar = '+quotedstr(edtDesignationChapitreAr.Text)+',');
+    sql.add('montant_ch = '+sCurrencyEdit1.Text);
+    sql.add('WHERE code_ch = ' + quotedstr(sEdit7.Text));
+    execsql;
+  end;
+end;
+
+procedure TMainForm.sButton3Click(Sender: TObject);
+begin
+  // delete
+  if sEdit8.Text <> '' then
+  with dm.Query do
+  begin
+    sql.Clear;
+    sql.add('DELETE FROM articles WHERE code_a = ' + quotedStr(sEdit8.Text));
+    execSQL;
+  end;
+end;
+
+procedure TMainForm.sButton5Click(Sender: TObject);
+begin
+  if sEdit8.Text <> '' then
+  with dm.Query do
+  begin
+    sql.Clear;
+    sql.add('UPDATE articles SET');
+    sql.add('designation_a_ar = ' + quotedstr(edtDesignationArticleAr.Text) + ',');
+    sql.add('decret = '+quotedstr(edtDecret.text) + ',');
+    sql.add('montant_a = '+sCurrencyEdit2.Text + ',');
+    sql.add('article = '+edtArticle.Text);
+    sql.add('WHERE code_a = ' + quotedstr(sEdit8.Text));
+    execSQL;
+  end;
 end;
 
 end.

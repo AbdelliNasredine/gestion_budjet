@@ -13,13 +13,10 @@ uses
   uFicheEngagaement in 'uFicheEngagaement.pas' {fFichierEngagament},
   uEntreprise in 'uEntreprise.pas' {fEntreprise},
   Unit5 in '..\..\..\Desktop\files\budjet\Unit5.pas' {Form5},
-  Unit4 in '..\..\..\Desktop\files\budjet\Unit4.pas' {Form4},
-  Unit3 in '..\..\..\Desktop\files\budjet\Unit3.pas' {Form3},
   Unit2 in '..\..\..\Desktop\files\budjet\Unit2.pas' {Form2},
   Unit1 in '..\..\..\Desktop\files\budjet\Unit1.pas' {Form1},
   uDesengagement in 'uDesengagement.pas' {fDesengagement},
-  uBs in 'uBs.pas' {fBS},
-  uMondat in 'uMondat.pas' {fMondat};
+  uBs in 'uBs.pas' {fBS};
 
 {$R *.res}
 
@@ -35,12 +32,9 @@ begin
   Application.CreateForm(TfFichierEngagament, fFichierEngagament);
   Application.CreateForm(TfEntreprise, fEntreprise);
   Application.CreateForm(TForm5, Form5);
-  Application.CreateForm(TForm4, Form4);
-  Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TfDesengagement, fDesengagement);
   Application.CreateForm(TfBS, fBS);
-  Application.CreateForm(TfMondat, fMondat);
   Application.Run;
 end.

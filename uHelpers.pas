@@ -96,6 +96,7 @@ procedure UpdateBanque(code, designationAr, designationFr: String);
 procedure DeleteBanque(code: String);
 // ****** Table - FicheEngagement ******
 procedure InsertFicheEngagement(
+  date,
   typeEngagaement,
   e1,
   e2,
@@ -107,7 +108,8 @@ procedure InsertFicheEngagement(
   m1,
   m2,
   m3,
-  m4 : String
+  m4,
+  solde : String
 );
 procedure DeleteFicheEngagement(code: String);
 
@@ -426,10 +428,10 @@ begin
   q := TADOQuery.Create(nil);
   q.Connection := dm.ADOConnection1;
   q.SQL.add('DELETE FROM branches WHERE code_b=' + QuotedStr(code)+';');
-  q.SQL.add('DELETE FROM rubriques WHERE code_r LIKE '+QuotedStr(code+'%')+';');
-  q.SQL.add('DELETE FROM sections WHERE code_s LIKE '+QuotedStr(code+'%')+';');
-  q.SQL.add('DELETE FROM chapitres WHERE code_ch LIKE '+QuotedStr(code+'%')+';');
-  q.SQL.add('DELETE FROM articles WHERE code_a LIKE'+QuotedStr(code+'%')+';');
+  //q.SQL.add('DELETE FROM rubriques WHERE code_r LIKE '+QuotedStr(code+'%')+';');
+  //q.SQL.add('DELETE FROM sections WHERE code_s LIKE '+QuotedStr(code+'%')+';');
+  //q.SQL.add('DELETE FROM chapitres WHERE code_ch LIKE '+QuotedStr(code+'%')+';');
+  //q.SQL.add('DELETE FROM articles WHERE code_a LIKE'+QuotedStr(code+'%')+';');
   q.ExecSQL;
   q.Close;
   q.Free;
@@ -657,6 +659,7 @@ begin
 end;
 
 procedure InsertFicheEngagement(
+  date,
   typeEngagaement,
   e1,
   e2,
@@ -668,7 +671,8 @@ procedure InsertFicheEngagement(
   m1,
   m2,
   m3,
-  m4 : String
+  m4,
+  solde : String
 );
 
 var q : TADOQuery;
@@ -679,18 +683,19 @@ begin
 
   codeA := QuotedStr(GetArticleByField('designation_a_ar', article).code);
 
+  {
   SQL_ANS_SOLD := '(select a.montant_a-isnull((select sum(montant_e1+montant_e2+montant_e3+montant_e4) from fiche_engagement where code_a= '+codeA+' ),0)'
    + '+isnull((select sum(montant_bs) from bs where code_a= '+codeA+' ),0)+isnull((select sum(montant_trans) from transferts where trans_in= '+codeA+' ),0)'
    + '-isnull((select sum(montant_trans) from transferts where trans_out= '+codeA+' ),0)+isnull((select sum(montant_e1+montant_e2+montant_e3+montant_e4) from '
    + 'fiche_engagement fe, desengagements de where de.code_fe=fe.code_fe and fe.code_a= '+codeA+' ),0) as compte_anc from articles a where code_a= '+codeA+' )';
-
+  }
   q.sql.Clear;
   q.sql.Text := 'INSERT INTO fiche_engagement'
     +'(code_fe,date_fe,annee_e,code_te,e1,e2,e3,e4,code_temp,code_bq,code_a'
     +',montant_e1,montant_e2, montant_e3, montant_e4, sit, solde) VALUES ('
-    + '(SELECT ISNULL(FORMAT(MAX(code_fe)+1, ''000''), ''001'') FROM fiche_engagement),'
-    + 'CAST(GETDATE() AS DATE),'
-    + 'YEAR(GETDATE()),'
+    + '(SELECT ISNULL(FORMAT(MAX(code_fe)+1, ''000''), ''001'') FROM fiche_engagement WHERE code_a = '+codeA+'),'
+    + 'CONVERT(DATE,'+QuotedStr(date)+'),'
+    + 'YEAR(CONVERT(DATE,'+QuotedStr(date)+')),'
     + '(SELECT code_te FROM type_engagement WHERE designation_te = '+QuotedStr(typeEngagaement)+'),'
     + QuotedStr(typeEngagaement) + ','
     + QuotedStr(e2) + ','
@@ -704,7 +709,7 @@ begin
     + m3 + ','
     + m4 + ','
     + '0,'
-    + SQL_ANS_SOLD + ')';
+    + solde + ')';
   q.ExecSQL;
   q.Close;
   q.Free;
@@ -716,7 +721,7 @@ var q : TADOQuery;
 begin
   q := TADOQuery.Create(nil);
   q.Connection := dm.ADOConnection1;
-  q.sql.Text := 'DELETE FROM fiche_engagement WHERE code_fe = ' + QuotedStr(code);
+  q.sql.Text := 'DELETE FROM fiche_engagement WHERE code_eng = ' + QuotedStr(code);
   q.ExecSQL;
   q.Close;
   q.Free;

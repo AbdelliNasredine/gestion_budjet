@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, sButton, sEdit, Mask, sMaskEdit, sCustomComboEdit,
-  sComboBox, sGroupBox, ExtCtrls, sPanel, Buttons, sBitBtn, sLabel;
+  sComboBox, sGroupBox, ExtCtrls, sPanel, Buttons, sBitBtn, sLabel,
+  sToolEdit, sCurrEdit, sCurrencyEdit, sCheckBox;
 
 type
   TfFichierEngagament = class(TForm)
@@ -29,22 +30,21 @@ type
     sLabel2: TsLabel;
     sLabel3: TsLabel;
     sLabel4: TsLabel;
-    sEdit7: TsEdit;
-    sEdit8: TsEdit;
-    sEdit9: TsEdit;
-    sEdit10: TsEdit;
     sLabel5: TsLabel;
-    sEdit11: TsEdit;
+    date: TsDateEdit;
+    m1: TsCurrencyEdit;
+    m2: TsCurrencyEdit;
+    m3: TsCurrencyEdit;
+    m4: TsCurrencyEdit;
+    solde: TsCurrencyEdit;
+    code: TsEdit;
     procedure sBitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbxChapitersChange(Sender: TObject);
     procedure sBitBtn1Click(Sender: TObject);
     procedure cbxTypeEngagaementChange(Sender: TObject);
     procedure cbxArticlesChange(Sender: TObject);
-    procedure sEdit10Exit(Sender: TObject);
-    procedure sEdit9Exit(Sender: TObject);
-    procedure sEdit8Exit(Sender: TObject);
-    procedure sEdit7Exit(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure reset;
@@ -57,7 +57,7 @@ var
 
 implementation
 
-uses Main, uHelpers;
+uses Main, uHelpers, uDataModule;
 
 {$R *.dfm}
 procedure TfFichierEngagament.reset;
@@ -67,21 +67,23 @@ begin
   cbxBanques.Text := '';
   cbxChapiters.Text := '';
   cbxArticles.Text := '';
-  sEdit10.Text := '0.00';
-  sEdit9.Text := '0.00';
-  sEdit8.Text := '0.00';
-  sEdit7.Text := '0.00';
   sEdit6.Text := '';
   sEdit5.Text := '';
   sEdit4.Text := '';
   sEdit3.Text := '';
-  sEdit11.Text := '';
+  // sEdit11.Text := '';
+  solde.Clear;
+  m1.Clear;
+  m2.Clear;
+  m3.Clear;
+  m4.Clear;
 end;
 
 
 procedure TfFichierEngagament.sBitBtn2Click(Sender: TObject);
 begin
   reset;
+  code.Clear;
   self.Close;
 end;
 
@@ -92,6 +94,26 @@ begin
   PopulateCbx2('banques', 'designation_bq_ar', cbxBanques);
   PopulateCbx2('type_engagement', 'designation_te', cbxTypeEngagaement);
   PopulateCbx2('chapitres','designation_ch_ar' ,  cbxChapiters);
+  if code.Text <> '' then
+  begin
+    sGroupBox2.Visible := true;
+    with dm.Query do
+    begin
+      sql.clear;
+      sql.add('SELECT * FROM fiche_engagement WHERE code_eng = '+quotedstr(code.Text));
+      open;
+      date.Text := FieldValues['date_fe'];
+      sEdit6.Text := FieldValues['e1'];
+      sEdit3.Text := FieldValues['e2'];
+      sEdit4.Text := FieldValues['e3'];
+      sEdit5.Text := FieldValues['e4'];
+      m1.Text := FieldValues['montant_e1'];
+      m2.Text := FieldValues['montant_e2'];
+      m3.Text := FieldValues['montant_e3'];
+      m4.Text := FieldValues['montant_e4'];
+      solde.Text := FieldValues['solde'];
+    end;
+  end;
 end;
 
 procedure TfFichierEngagament.cbxChapitersChange(Sender: TObject);
@@ -113,6 +135,7 @@ begin
   try
     if GetTypeEngagementByField('designation_te', cbxTypeEngagaement.Text).valuer = 2 then
       InsertFicheEngagement(
+        date.Text,
         cbxTypeEngagaement.Text,
         sEdit6.Text,
         sEdit3.Text,
@@ -121,13 +144,15 @@ begin
         '',
         cbxBanques.Text,
         cbxArticles.Text,
-        sEdit10.Text,
-        '0',
-        '0',
-        '0'
+        m1.Text,
+        m2.Text,
+        m3.Text,
+        m4.Text,
+        solde.Text
       )
     else
       InsertFicheEngagement(
+        date.Text,
         cbxTypeEngagaement.Text,
         sEdit6.Text,
         sEdit3.Text,
@@ -136,10 +161,11 @@ begin
         cbxTypeEmploye.Text,
         cbxBanques.Text,
         cbxArticles.Text,
-        sEdit10.Text,
-        sEdit9.Text,
-        sEdit7.Text,
-        sEdit8.Text
+        m1.Text,
+        m2.Text,
+        m3.Text,
+        m4.Text,
+        solde.Text
       );
   except on E: Exception do
     begin
@@ -167,18 +193,18 @@ begin
           sEdit6.Text := '';
           sPanel2.Visible := true;
           cbxTypeEmploye.Visible := false;
-          sEdit9.Visible := false;
-          sEdit8.Visible := false;
-          sEdit7.Visible := false;
+          m2.Visible := false;
+          m3.Visible := false;
+          m4.Visible := false;
         end
       else
         begin
           sEdit6.Text := te.designation;
           sPanel2.Visible := false;
           cbxTypeEmploye.Visible := true;
-          sEdit9.Visible := true;
-          sEdit8.Visible := true;
-          sEdit7.Visible := true;
+          m2.Visible := true;
+          m3.Visible := true;
+          m4.Visible := true;
         end;
     end
   else
@@ -192,70 +218,22 @@ begin
   if cbxArticles.Text <> '' then
     begin
       Article := GetArticleByField('designation_a_ar', cbxArticles.Text);
-      sEdit11.Text := CurrToStr(GetAncienSolde(Article.code));
+      // sEdit11.Text := CurrToStr(GetAncienSolde(Article.code));
+      solde.Text :=  CurrToStr(GetAncienSolde(Article.code));
     end
   else
-    sEdit11.Text := '';
-
+    begin
+      // sEdit11.Text := '';
+      solde.Clear;
+    end;
 end;
 
-procedure TfFichierEngagament.sEdit10Exit(Sender: TObject);
-var montant : Currency;
+procedure TfFichierEngagament.FormClose(Sender: TObject;
+  var Action: TCloseAction);
 begin
-     // check if they havae enterd a currency
-     try
-      montant := StrToCurr(sEdit10.Text);
-      if sEdit11.Text <> '' then
-        if StrToCurr(sEdit11.Text) < montant then
-          MessageDlg('ÊÍÐíÑ: ÇáãÈáÛ ÇáÐí ÃÏÎáÊå ÃßÈÑ ãä ÑÕíÏ ÇáãÇÏÉ', mtWarning, [mbOk], 0);
-     except
-      on E: Exception do
-        sEdit10.Text := '';
-     end;
+  date.Clear;
+  code.Clear;
+  reset;
 end;
 
-procedure TfFichierEngagament.sEdit9Exit(Sender: TObject);
-var montant : Currency;
-begin
-     // check if they havae enterd a currency
-     try
-      montant := StrToCurr(sEdit9.Text);
-      if sEdit11.Text <> '' then
-        if StrToCurr(sEdit11.Text) < montant then
-          MessageDlg('ÊÍÐíÑ: ÇáãÈáÛ ÇáÐí ÃÏÎáÊå ÃßÈÑ ãä ãÈáÛ ÇáãÇÏÉ', mtWarning, [mbOk], 0);
-     except
-      on E: Exception do
-        sEdit9.Text := '';
-     end;
-end;
-
-procedure TfFichierEngagament.sEdit8Exit(Sender: TObject);
-var montant : Currency;
-begin
-     // check if they havae enterd a currency
-     try
-      montant := StrToCurr(sEdit8.Text);
-      if sEdit11.Text <> '' then
-        if StrToCurr(sEdit11.Text) < montant then
-          MessageDlg('ÊÍÐíÑ: ÇáãÈáÛ ÇáÐí ÃÏÎáÊå ÃßÈÑ ãä ãÈáÛ ÇáãÇÏÉ', mtWarning, [mbOk], 0);
-     except
-      on E: Exception do
-        sEdit8.Text := '';
-     end;
-end;
-
-procedure TfFichierEngagament.sEdit7Exit(Sender: TObject);
-var montant : Currency;
-begin
-     // check if they havae enterd a currency
-     try
-      montant := StrToCurr(sEdit7.Text);
-      if sEdit11.Text <> '' then
-        if StrToCurr(sEdit11.Text) < montant then
-          MessageDlg('ÊÍÐíÑ: ÇáãÈáÛ ÇáÐí ÃÏÎáÊå ÃßÈÑ ãä ãÈáÛ ÇáãÇÏÉ', mtWarning, [mbOk], 0);
-     except
-      on E: Exception do
-        sEdit7.Text := '';
-     end;
-end;
 end.

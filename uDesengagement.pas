@@ -39,8 +39,7 @@ begin
     with dm.Query do
     begin
       sql.Clear;
-      sql.Add('INSERT INTO desengagements (code_de, code_fe, date_de, motif_de) VALUES (');
-      sql.Add('(SELECT ISNULL(MAX(code_de)+1, 0) FROM desengagements),');
+      sql.Add('INSERT INTO desengagements (code_eng, date_de, motif_de) VALUES (');
       sql.Add(QuotedStr(sEdit1.Text)+',');
       sql.Add('GETDATE(),');
       sql.Add(QuotedStr(sMemo1.Text)+')');
